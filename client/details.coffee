@@ -43,6 +43,6 @@ Template.details.helpers
 	posterContent:()->
 		@comment
 	postTimeFormatted:()->
-		moment(@postTime).format('MM/DD/YYYY H:m')
+		moment(@postTime).format('MM/DD/YYYY H:mm')
 
 
