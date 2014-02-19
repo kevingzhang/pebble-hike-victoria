@@ -46,28 +46,7 @@ Template.details.maybeChosen = function (what) {
   return what == myRsvp.rsvp ? "chosen btn-inverse" : "";
 };
 
-Template.details.events({
-  'click .rsvp_yes': function () {
-    Meteor.call("rsvp", Session.get("selected"), "yes");
-    return false;
-  },
-  'click .rsvp_maybe': function () {
-    Meteor.call("rsvp", Session.get("selected"), "maybe");
-    return false;
-  },
-  'click .rsvp_no': function () {
-    Meteor.call("rsvp", Session.get("selected"), "no");
-    return false;
-  },
-  'click .invite': function () {
-    openInviteDialog();
-    return false;
-  },
-  'click .remove': function () {
-    Parties.remove(this._id);
-    return false;
-  }
-});
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Party attendance widget
