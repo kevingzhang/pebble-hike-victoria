@@ -124,3 +124,5 @@ Template.inviteDialog.uninvited = function () {
 Template.inviteDialog.displayName = function () {
   return displayName(this);
 };
+
+// testing nhan.
