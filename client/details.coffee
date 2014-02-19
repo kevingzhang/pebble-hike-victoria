@@ -17,8 +17,9 @@ Template.details.events
 		comment = postEle.value
 		if comment.length is 0
 			return
-		partyId = t.data._id
-		Parties.update partyId, {$push:{comments:{posterId:Meteor.userId(), comment:comment, postTime:new Date()}}}
+		partyId = @_id
+		timeNow = new Date()
+		Parties.update partyId, {$push:{comments:{posterId:Meteor.userId(), comment:comment, postTime:timeNow}}}
 		return false
 
 	'click .invite': ()->
@@ -28,4 +29,20 @@ Template.details.events
 	'click .remove': ()->
 		Parties.remove(this._id);
 		return false;
+
+
+Template.details.helpers
+	posterName: ()->
+		poster = Meteor.users.findOne @posterId
+		unless poster?
+			return "-"
+		if poster._id is Meteor.userId()
+			"me"
+		else
+			displayName poster
+	posterContent:()->
+		@comment
+	postTimeFormatted:()->
+		moment(@postTime).format('MM/DD/YYYY H:m')
+
 
