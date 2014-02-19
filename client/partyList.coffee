@@ -16,6 +16,11 @@ Template.partyList.helpers
 		else
 			displayName owner 
 
+	timeFormatted: ()->
+		moment(@hikeTime).format("MM/DD/YYYY")
+	upcoming:()->
+		moment().isBefore(moment(@hikeTime))
+
 Template.partyList.events
 	"click .partyItem":(e,t)->
 		e.preventDefault()

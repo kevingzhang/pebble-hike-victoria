@@ -1,6 +1,12 @@
 Template.createDialog.events
 	'click .save': (event, template) ->
-		hikeTime = template.find(".dlgTime").value
+		hikeTimeString = template.find(".dlgTime").value
+		hikeTime = moment hikeTimeString, 'MM-DD-YYYY'
+		unless hikeTime.isValid()
+			Session.set "createError", "Hike time should be in format of MM-DD-YYYY"
+			return
+
+
 		title = template.find(".dlgTitle").value
 		description = template.find(".description").value
 		publicAccess = ! template.find(".private").checked
@@ -20,7 +26,7 @@ Template.createDialog.events
 				description: description
 				public: publicAccess
 				maplink: maplink
-				hikeTime:hikeTime
+				hikeTime:hikeTime.toDate()
 				inviated:[]
 				rsvps:[]
 			

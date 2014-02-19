@@ -6,5 +6,5 @@ Meteor.publish("directory", function () {
 
 Meteor.publish("parties", function () {
   return Parties.find(
-    {$or: [{"public": true}, {invited: this.userId}, {owner: this.userId}]});
+    {$or: [{"public": true}, {invited: this.userId}, {owner: this.userId}]}, {sort:{hikeTime:-1}});
 });

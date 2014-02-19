@@ -18,10 +18,10 @@
 
 	<div class="container">
 		<div class="header row">
-			<div class="span5">
+			<div class="col-lg-5">
 				<h3 style="margin-bottom: 0px">Pebble hiking group</h3>
 			</div>
-			<div class="span5">
+			<div class="col-lg-4">
 				<div style="float: right">
 					{{loginButtons align="right"}}
 				</div>
@@ -44,9 +44,16 @@
 <template name="partyList">
 	
 	{{#each partyList}}
-	<div class='row partyItem {{isSelected}}' data-partyId="{{_id}}">
-		<div class="col-lg-3">
-			{{hikeTime}}
+	<div class='row partyItem {{isSelected}} {{#unless upcoming}}history{{/unless}}' data-partyId="{{_id}}">
+		<div class="col-lg-1">
+			{{#if upcoming}}
+			<span class="glyphicon glyphicon-star"/>
+			{{else}}
+			
+			{{/if}}
+		</div>
+		<div class="col-lg-2">
+			{{timeFormatted}}
 		</div>
 		<div class="col-lg-3">
 			{{title}}
@@ -60,7 +67,9 @@
 	</div>
 	{{/each}}
 	<div>
-		<button class="btn btn-default" id="addParty">Propose a new hike</button>
+	{{#if currentUser}}
+	<button class="btn btn-default" id="addParty">Propose a new hike</button>
+	{{/if}}
 	</div>
 </template>
 
@@ -178,7 +187,7 @@
 			</div>
 			<div class='input-group'>
 				<span class='input-group-addon'>Map link (google map URL)</span>
-				<input type="" class="form-control maplink">
+				<input type="" class="form-control maplink" value="https://www.google.com/maps/place/East+Sooke+Regional+Park+-+Aylard+Farm+Parking+Lot/@48.3269904,-123.6388427,17z/data=!3m1!4b1!4m2!3m1!1s0x548f06169095d515:0x98f4a55f3788ce9a">
 			</div>
 
 			
