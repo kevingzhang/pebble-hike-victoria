@@ -21,7 +21,7 @@ Parties.allow
 				future Meteor will have a schema system to makes that easier.
 				###
 			else
-				return true;
+				return true
 	
 	remove: (userId, party)->
 		# You can only remove parties that you created and nobody is going to.

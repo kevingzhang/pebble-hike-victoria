@@ -4,7 +4,9 @@
     "basePackages": {
       "bootstrap-3": {},
       "iron-router": {},
-      "moment": {}
+      "moment": {},
+      "semantic-ui": {},
+      "iron-router-progress": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -21,6 +23,16 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.5.1",
         "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "semantic-ui": {
+        "git": "https://github.com/nooitaf/meteor-semantic-ui.git",
+        "tag": "v0.12.5",
+        "commit": "71d23b40d8ca6351dfd0740ba7393a0c88e57561"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
       }
     }
   }

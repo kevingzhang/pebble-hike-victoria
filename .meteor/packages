@@ -21,3 +21,6 @@ jquery
 underscore
 madewith
 moment
+semantic-ui
+accounts-google
+iron-router-progress
