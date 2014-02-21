@@ -1,15 +1,16 @@
 Template.details.events
 	'click .rsvp_yes': ()->
 		Meteor.call "rsvp", Session.get("selected"), "yes"
-		return false;
+		return false
 
 	'click .rsvp_maybe': ()->
 		Meteor.call "rsvp", Session.get("selected"), "maybe"
-		return false;
+		return false
 
 	'click .rsvp_no': ()->
 		Meteor.call "rsvp", Session.get("selected"), "no"
-		return false;
+		return false
+
 	'click #postCommentBtn':(e,t)->
 		postEle = t.find '#postCommentInput'
 		unless postEle?
@@ -23,12 +24,12 @@ Template.details.events
 		return false
 
 	'click .invite': ()->
-		openInviteDialog();
-		return false;
+		openInviteDialog()
+		return false
 
 	'click .remove': ()->
-		Parties.remove(this._id);
-		return false;
+		Parties.remove(this._id)
+		return false
 
 
 Template.details.helpers
@@ -40,8 +41,10 @@ Template.details.helpers
 			"me"
 		else
 			displayName poster
+
 	posterContent:()->
 		@comment
+
 	postTimeFormatted:()->
 		moment(@postTime).format('MM/DD/YYYY H:mm')
 
