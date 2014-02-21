@@ -1,0 +1,40 @@
+
+<template name="partyList">
+	<div class="row partyHeader">
+		<div class="col-lg-1">New</div>
+		<div class="col-lg-2">Hike time</div>
+		<div class="col-lg-3">Place</div>
+		<div class="col-lg-2">Initiator</div>
+		<div class="col-lg-1">RSVP#</div>
+		<!-- div class="col-lg-2">Comments#</div -->
+	</div>
+	{{#each partyList}}
+	
+        <div class='row partyItem {{isSelected}} {{#unless upcoming}}history{{/unless}}' data-partyId="{{_id}}">
+            <div class="col-lg-1">
+                {{#if upcoming}}
+                <span class="glyphicon glyphicon-star"/>
+                {{else}}
+                
+                {{/if}}
+            </div>
+            <div class="col-lg-2">
+                {{timeFormatted}}
+            </div>
+            <div class="col-lg-3">
+                {{title}}
+            </div>			
+            <div class="col-lg-2">
+                {{initiator}}
+            </div>			
+            <div class="col-lg-1">
+                {{rsvpsCount}}
+            </div>
+            <!-- div class="col-lg-2">
+                -
+            </div -->			
+        </div>
+	{{/each}}
+
+</template>
+

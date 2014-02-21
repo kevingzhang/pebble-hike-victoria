@@ -1,0 +1,149 @@
+<template name="partyPage">
+	{{#if showCreateDialog}}
+		{{> createDialog}}
+	{{/if}}
+
+	{{#if showInviteDialog}}
+		{{> inviteDialog}}
+	{{/if}}
+
+	<div class="container">
+		<div class="header row">
+            <div class="col-lg-2">
+                {{#if currentUser}}
+                    <button class="btn btn-default" id="addParty">Propose a new hike</button>
+                {{/if}}
+            </div>
+			<div class="col-lg-6">
+				<div style="float: right">
+					{{loginButtons align="right"}}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+		{{> partyList}}
+
+		</div>
+
+		<div class="row">
+			{{> details}}
+		</div>
+	</div>
+</template>
+
+
+
+<template name="attendance">
+	<div class="attendance well well-small">
+		<div class="muted who"><b>Who</b></div>
+		{{#if public}}
+			<div>
+				<b>Everyone</b>
+				<span class="label label-inverse pull-right">Invited</span>
+			</div>
+		{{/if}}
+
+		{{#each rsvps}}
+			<div>
+				{{rsvpName}}
+				{{#if rsvpIs "yes"}}
+					<span class="label label-success pull-right">Going</span>
+				{{/if}}
+				{{#if rsvpIs "maybe"}}
+					<span class="label label-info pull-right">Maybe</span>
+				{{/if}}
+				{{#if rsvpIs "no"}}
+					<span class="label label pull-right">No</span>
+				{{/if}}
+			</div>
+		{{/each}}
+
+		{{#unless public}}
+			{{#each outstandingInvitations}}
+				<div>
+					{{invitationName}}
+					<span class="label label-inverse pull-right">Invited</span>
+				</div>
+			{{/each}}
+		{{/unless}}
+
+		{{#if nobody}}
+			<div>Nobody.</div>
+		{{/if}}
+
+		{{#if canInvite}}
+			<div class="invite">
+				<a href="#" class="btn btn-mini invite">Invite people</a>
+			</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="createDialog">
+	<div class="mask"> </div>
+	<div class="modal addPartyDlg">
+		<div class="modal-header">
+			<button type="button" class="close cancel">&times;</button>
+			<h3>Propose a new hike</h3>
+		</div>
+
+		<div id="dlg" class="modal-body">
+			{{#if error}}
+				<div class="alert alert-error">{{error}}</div>
+			{{/if}}
+			<div class='input-group'>
+				<span class='input-group-addon'>Time (mm/dd/yyyy)</span>
+				<input type="" class="form-control dlgTime">
+			</div>
+			<div class='input-group'>
+				<span class='input-group-addon'>Place (text)</span>
+				<input type=" " class="form-control dlgTitle">
+			</div>
+			<div class='input-group'>
+				<span class='input-group-addon'>Map link (google map URL)</span>
+				<input type="" class="form-control maplink" value="https://www.google.com/maps/place/East+Sooke+Regional+Park+-+Aylard+Farm+Parking+Lot/@48.3269904,-123.6388427,17z/data=!3m1!4b1!4m2!3m1!1s0x548f06169095d515:0x98f4a55f3788ce9a">
+			</div>
+
+
+			<label>Description</label>
+
+			<textarea class="form-control description"></textarea>
+
+			<label class="checkbox">
+				<input type="checkbox" class="private">
+				Private party &mdash; invitees only
+			</label>
+		</div>
+
+		<div class="modal-footer">
+			<a href="#" class="btn cancel">Cancel</a>
+			<a href="#" class="btn btn-primary save">Add party</a>
+		</div>
+	</div>
+</template>
+
+<template name="inviteDialog">
+	<div class="mask"> </div>
+	<div class="modal">
+		<div class="modal-header">
+			<button type="button" class="close done">&times;</button>
+			<h3>Invite people</h3>
+		</div>
+
+		<div class="modal-body">
+			{{#each uninvited}}
+				<div class="invite-row">
+					<a href="#" class="btn invite">Invite</a>
+					{{displayName}}
+				</div>
+			{{else}}
+				Everyone on the site has already been invited.
+			{{/each}}
+		</div>
+
+		<div class="modal-footer">
+			<a href="#" class="btn btn-primary done">Done</a>
+		</div>
+	</div>
+</template>
