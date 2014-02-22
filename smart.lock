@@ -26,8 +26,8 @@
       },
       "semantic-ui": {
         "git": "https://github.com/nooitaf/meteor-semantic-ui.git",
-        "tag": "v0.12.5",
-        "commit": "71d23b40d8ca6351dfd0740ba7393a0c88e57561"
+        "tag": "v0.13.0",
+        "commit": "e52080af47b590b6204d0824ece47e0f1a914f76"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
