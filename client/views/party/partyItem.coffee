@@ -1,6 +1,6 @@
 
 Template.partyItem.events({
-	"click .partyItem": (e, t) ->
+	"click .row": (e, t) ->
         # t.isSelected = not t.isSelected
         e.preventDefault()
         clickedPartyId = e.currentTarget.getAttribute 'data-partyId'

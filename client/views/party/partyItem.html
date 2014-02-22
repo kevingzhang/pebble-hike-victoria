@@ -1,7 +1,7 @@
 
 <template name="partyItem">
 	    <div class="partyItem ui segment {{#unless upcoming}}history{{/unless}}" data-partyId="{{_id}}">
-            <div class='row '>
+            <div class='row ' data-partyId="{{_id}}">
                 {{#if upcoming}}
                     <div class="ui left corner teal label">
                         <i class="star icon"></i>

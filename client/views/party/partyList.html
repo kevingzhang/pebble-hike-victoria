@@ -14,43 +14,4 @@
 
 </template>
 
-<template name="partyItem">
-	    <div class="partyItem ui segment {{#unless upcoming}}history{{/unless}}" data-partyId="{{_id}}">
-            <div class='row '>
-                {{#if upcoming}}
-                    <div class="ui left corner teal label">
-                        <i class="star icon"></i>
-                    </div>
-                {{/if}}
-                <div class="col-lg-1">
-                    {{#if isSelected}}
-                        <i class="angle down icon"></i>
-                    {{else}}
-                        <i class="angle up icon"></i>
-                    {{/if}}
-                </div>
-                <div class="col-lg-2">
-                    <i class="calendar icon"></i>
-                    {{timeFormatted}}
-                </div>
-                <div class="col-lg-3">
-                    <i class="map marker icon"></i>
-                    {{title}}
-                </div>			
-                <div class="col-lg-2">
-                    <i class="user icon"></i>
-                    {{initiator}}
-                </div>			
-                <div class="col-lg-1">
-                    <i class="users icon"></i>
-                    {{rsvpsCount}}
-                </div>
-                <!-- div class="col-lg-2">
-                    -
-                </div -->			
-            </div>
-            {{#if isSelected}}
-                {{> details}}
-            {{/if}}
-        </div>
-</template>
+
