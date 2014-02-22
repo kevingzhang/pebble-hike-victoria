@@ -6,7 +6,6 @@ Template.createDialog.events
 			Session.set "createError", "Hike time should be in format of MM-DD-YYYY"
 			return
 
-
 		title = template.find(".dlgTitle").value
 		description = template.find(".description").value
 		publicAccess = ! template.find(".private").checked
@@ -14,12 +13,14 @@ Template.createDialog.events
 
 		if (title.length > 100)
 			Session.set "createError","Title too long"
+
 		if (description.length > 1000)
 			Session.set "createError","Description too long"
+
 		unless Meteor.userId()
 			Session.set "createError", "You must be logged in"
 
-		if (title.length && description.length) 
+		if (title.length and description.length)
 			id = Parties.insert
 				owner: Meteor.userId()
 				title: title
@@ -29,15 +30,13 @@ Template.createDialog.events
 				hikeTime:hikeTime.toDate()
 				inviated:[]
 				rsvps:[]
-			
 
 			Session.set "selected", id
-			if (! publicAccess && Meteor.users.find().count() > 1)
+			if (not publicAccess and Meteor.users.find().count() > 1)
 				openInviteDialog()
 			Session.set "showCreateDialog", false
 		else
 			Session.set "createError","It needs a title and a description, or why bother?"
-
 
 	'click .cancel': ()->
 		Session.set "showCreateDialog", false
