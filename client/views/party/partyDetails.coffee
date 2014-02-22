@@ -48,4 +48,32 @@ Template.details.helpers
 	postTimeFormatted:()->
 		moment(@postTime).format('MM/DD/YYYY H:mm')
 
+# ///////////////////////////////////////////////////////////////////////////////
+# // Party details sidebar
+
+Template.details.party = () ->
+    return Parties.findOne(Session.get("selected"))
+
+
+Template.details.anyParties = () ->
+    return Parties.find().count() > 0
+
+
+Template.details.creatorName = () ->
+    owner = Meteor.users.findOne(this.owner)
+    if (owner._id == Meteor.userId())
+        return "me"
+    return displayName(owner)
+
+
+Template.details.canRemove = () ->
+  return this.owner == Meteor.userId() and attending(this) == 0
+
+
+Template.details.maybeChosen = (what) ->
+    myRsvp = _.find(this.rsvps, (r) ->
+        return r.user == Meteor.userId()
+    ) or {}
+
+    return if what == myRsvp.rsvp then "chosen btn-inverse" else ""
 
