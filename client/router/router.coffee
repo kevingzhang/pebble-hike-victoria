@@ -17,7 +17,7 @@ HomeController = RouteController.extend({
         ]
     data: () ->
         partyList: () ->
-            Parties.find()
+            Parties.find({}, {sort: {hikeTime: -1}})
 
 })
 
