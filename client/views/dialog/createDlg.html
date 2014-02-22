@@ -11,9 +11,19 @@
 			{{#if error}}
 				<div class="alert alert-error">{{error}}</div>
 			{{/if}}
-			<div class='input-group'>
-				<span class='input-group-addon'>Time (mm/dd/yyyy)</span>
-				<input type="" class="form-control dlgTime">
+			<div class='input-group' id='datetimepicker'>
+				<span class='input-group-addon'>Date and Time</span>
+				<!-- input type="" class="form-control dlgTime" 
+                class="input-append date" 
+                -->
+                <div id="datetimepicker_1">
+                    <input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime"></input>
+                </div>
+                <span class="input-group-addon add-on" style="vertical-align: middle">
+                  <i class="icon"
+                    data-time-icon="icon-time" data-date-icon="icon-calendar"
+                  ></i>
+                </span>
 			</div>
 			<div class='input-group'>
 				<span class='input-group-addon'>Place (text)</span>

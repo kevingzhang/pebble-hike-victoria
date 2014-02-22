@@ -6,7 +6,8 @@
       "iron-router": {},
       "moment": {},
       "semantic-ui": {},
-      "iron-router-progress": {}
+      "iron-router-progress": {},
+      "bootstrap-datetimepicker": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -33,6 +34,11 @@
         "git": "https://github.com/Multiply/iron-router-progress.git",
         "tag": "v0.2.0",
         "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+      },
+      "bootstrap-datetimepicker": {
+        "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
+        "tag": "v0.0.6",
+        "commit": "728e5d603c377652e6909e180358364c46ce95ff"
       }
     }
   }

@@ -1,7 +1,7 @@
 Template.createDialog.events
 	'click .save': (event, template) ->
 		hikeTimeString = template.find(".dlgTime").value
-		hikeTime = moment hikeTimeString, 'MM-DD-YYYY'
+		hikeTime = moment hikeTimeString, 'YYYY-MM-DD h:mm a'
 		unless hikeTime.isValid()
 			Session.set "createError", "Hike time should be in format of MM-DD-YYYY"
 			return
@@ -41,6 +41,13 @@ Template.createDialog.events
 	'click .cancel': ()->
 		Session.set "showCreateDialog", false
 
+
+Template.createDialog.rendered = () ->
+    $('#datetimepicker').datetimepicker({
+        language: 'pt-BR',
+        format: 'yyyy-MM-dd hh:mm PP',
+        pick12HourFormat: true
+    })
 
 
 Template.createDialog.error = ()->

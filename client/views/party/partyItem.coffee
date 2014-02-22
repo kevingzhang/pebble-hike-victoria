@@ -38,7 +38,7 @@ Template.partyItem.helpers({
 			displayName owner
 
 	timeFormatted: ()->
-		moment(@hikeTime).format("MM/DD/YYYY")
+		moment(@hikeTime).format("ddd, MMM DD, YYYY h:mm a")
 
 	rsvpsCount: ()->
 		@rsvps.length

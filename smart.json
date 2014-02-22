@@ -4,6 +4,7 @@
     "iron-router": {},
     "moment": {},
     "semantic-ui": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "bootstrap-datetimepicker": {}
   }
 }
