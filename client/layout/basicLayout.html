@@ -1,0 +1,14 @@
+<template name="basicLayout">  
+    <header>                   
+        <title>Pebble hiking group in Victoria,BC</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{yield 'header'}}     
+    </header>
+    <div id="main">            
+        {{yield}}
+        {{! Also a sidebar! }} 
+    </div>                     
+    <footer>                   
+        {{yield 'footer'}}     
+    </footer>
+</template>        

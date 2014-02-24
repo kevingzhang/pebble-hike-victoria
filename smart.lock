@@ -4,7 +4,10 @@
     "basePackages": {
       "bootstrap-3": {},
       "iron-router": {},
-      "moment": {}
+      "moment": {},
+      "semantic-ui": {},
+      "iron-router-progress": {},
+      "bootstrap-datetimepicker": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -21,6 +24,21 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.5.1",
         "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "semantic-ui": {
+        "git": "https://github.com/nooitaf/meteor-semantic-ui.git",
+        "tag": "v0.13.0",
+        "commit": "e52080af47b590b6204d0824ece47e0f1a914f76"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+      },
+      "bootstrap-datetimepicker": {
+        "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
+        "tag": "v0.0.6",
+        "commit": "728e5d603c377652e6909e180358364c46ce95ff"
       }
     }
   }

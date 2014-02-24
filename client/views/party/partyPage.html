@@ -1,0 +1,33 @@
+<template name="partyPage">
+	{{#if showCreateDialog}}
+		{{> createDialog}}
+	{{/if}}
+
+	{{#if showInviteDialog}}
+		{{> inviteDialog}}
+	{{/if}}
+
+	<div class="container">
+		<div class="header row">
+            <div class="col-lg-2">
+                {{#if currentUser}}
+                    <button class="btn btn-default" id="addParty">Propose a new hike</button>
+                {{/if}}
+            </div>
+            <div style="float: right">
+                {{loginButtons align="right"}}
+            </div>
+		</div>
+		<div class="row">
+
+		{{> partyList}}
+
+		</div>
+
+		<!-- div class="row">
+			> details
+		</div -->
+	</div>
+</template>
+
+

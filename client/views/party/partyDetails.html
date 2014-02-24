@@ -1,0 +1,64 @@
+
+<template name="details">
+	<div class="details">
+		{{#if party}}
+			{{#with party}}
+				<h1>{{title}}</h1>
+
+				<div class="description">{{description}}</div>
+				<div><a href="{{maplink}}" targety="_blank" >Open in Google Map</a></div>
+
+				{{> attendance }}
+
+				<div class="rsvp-buttons">
+					{{#if currentUser}}
+						<input type="button" value="I'm going!"
+									 class="btn btn-small rsvp_yes {{maybeChosen "yes"}}">
+						<input type="button" value="Maybe"
+									 class="btn btn-small rsvp_maybe {{maybeChosen "maybe"}}">
+						<input type="button" value="No"
+									 class="btn btn-small rsvp_no {{maybeChosen "no"}}">
+						
+					{{else}}
+						<i>Sign in to RSVP for this hike.</i>
+					{{/if}}
+					<p><small>Posted by {{creatorName}}</small></p>
+				</div>
+
+				{{#if canRemove}}
+					<div class="alert alert-info"><small>
+							You posted this party and nobody is signed up to go, so if
+							you like, you could
+							<b><a href="#" class="remove">delete this listing</a></b>.
+					</small></div>
+				{{/if}}
+				<div id="PostCommentPanel">
+					<div>
+						<input id='postCommentInput' type='text' placeholder="Say something" class=""/>
+						<button id='postCommentBtn' class='btn btn-default'>Post</button>
+					</div>
+					{{#each comments}}
+					<div class='row'>
+						<div class='col-lg-2'>
+							{{posterName}}@{{postTimeFormatted}}
+						</div>
+						<div class="col-lg-8">
+							{{posterContent}}
+						</div>
+					</div>
+					{{/each}}
+				</div>
+			{{/with}}
+		{{else}}
+			<h1 class="muted pagination-centered">
+				{{#if anyParties}}
+					Click a party to select it
+				{{else}}
+					Sign in to post an event
+				{{/if}}
+			</h1>
+		{{/if}}
+	</div>
+	<!-- <iframe src="http://mapsengine.google.com/map/embed?mid=z-BEFzFo7gdM.kYdiUKVQpQQI" width="640" height="480"></iframe> -->
+</template>
+
