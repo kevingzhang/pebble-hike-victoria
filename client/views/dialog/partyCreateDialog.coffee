@@ -8,7 +8,7 @@ Template.createDialog.events
 
 		title = template.find(".dlgTitle").value
 		description = template.find(".description").value
-		publicAccess = ! template.find(".private").checked
+		publicAccess = true  # not template.find(".private").checked
 		maplink = template.find(".maplink").value
 
 		if (title.length > 100)
