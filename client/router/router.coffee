@@ -8,6 +8,7 @@ Router.configure({
     }
 })
 
+
 HomeController = RouteController.extend({
     template: 'partyPage'
     waitOn: () ->
@@ -21,8 +22,10 @@ HomeController = RouteController.extend({
 
 })
 
+
 Router.map(
-    ()->
+    () ->
+        # the home page, default landing page
         @route(
             'home',
             {
@@ -32,4 +35,21 @@ Router.map(
         )
 
         @route( 'checkMap', { path:'/map/:_id'} )
+
+        # the partyDetailPage
+        @route(
+            'partyDetailPage',
+            {
+                path :  '/event/:_id',
+                template : 'details',
+                data: () ->
+                    console.log("#{this.params._id}")  # ?????
+                    pty = Parties.findOne({})
+                    # pty = Parties.findOne(this.params._id)
+                    console.log("found party id: #{pty?._id}")
+                    return pty
+            }
+        )
+
+
 )
