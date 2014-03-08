@@ -8,7 +8,7 @@ Template.header.events({
         $('.angle.icon').toggleClass('down').toggleClass('up')
 
     # this is the post new event
-    "click #addEvent": (e,t) ->
+    "click #addEvent" : (e,t) ->
         e.preventDefault()
 
         Session.set("createError", null)

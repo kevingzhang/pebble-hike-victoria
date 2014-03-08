@@ -1,4 +1,4 @@
-Template.details.events
+Template.eventDetails.events
     'click .rsvp_yes': ()->
         Meteor.call "rsvp", Session.get("selected"), "yes"
         return false
@@ -32,7 +32,7 @@ Template.details.events
         return false
 
 
-Template.details.helpers
+Template.eventDetails.helpers
     posterName: () ->
         poster = Meteor.users.findOne @posterId
         unless poster?
@@ -51,26 +51,26 @@ Template.details.helpers
 # ///////////////////////////////////////////////////////////////////////////////
 # // event details sidebar
 
-Template.details.selectedEvent = () ->
+Template.eventDetails.selectedEvent = () ->
     return Events.findOne(Session.get("selected"))
 
 
-Template.details.anyEvents = () ->
+Template.eventDetails.anyEvents = () ->
     return Events.find().count() > 0
 
 
-Template.details.creatorName = () ->
+Template.eventDetails.creatorName = () ->
     owner = Meteor.users.findOne(this.owner)
     if (owner._id == Meteor.userId())
         return "me"
     return displayName(owner)
 
 
-Template.details.canRemove = () ->
+Template.eventDetails.canRemove = () ->
   return this.owner == Meteor.userId() and attending(this) == 0
 
 
-Template.details.maybeChosen = (what) ->
+Template.eventDetails.maybeChosen = (what) ->
     myRsvp = _.find(this.rsvps, (r) ->
         return r.user == Meteor.userId()
     ) or {}
