@@ -1,0 +1,51 @@
+
+<template name="createDialog">
+    <div class="mask"> </div>
+    <div class="modal addEventDlg">
+        <div class="modal-header">
+            <button type="button" class="close cancel">&times;</button>
+            <h3>Propose a new hike</h3>
+        </div>
+
+        <div id="dlg" class="modal-body">
+            {{#if error}}
+                <div class="alert alert-error">{{error}}</div>
+            {{/if}}
+            <div class='input-group' id='datetimepicker'>
+                <span class='input-group-addon'>Date and Time</span>
+                <!-- input type="" class="form-control dlgTime" 
+                class="input-append date" 
+                -->
+                <div id="datetimepicker_1">
+                    <input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime"></input>
+                </div>
+                <span class="input-group-addon add-on" style="vertical-align: middle">
+                  <i class="icon" data-time-icon="icon-time" data-date-icon="icon-calendar" ></i>
+                </span>
+            </div>
+            <div class='input-group'>
+                <span class='input-group-addon'>Place (text)</span>
+                <input type=" " class="form-control dlgTitle">
+            </div>
+            <div class='input-group'>
+                <span class='input-group-addon'>Map link (google map URL)</span>
+                <input type="" class="form-control maplink" value="">
+            </div>
+
+
+            <label>Description</label>
+
+            <textarea class="form-control description"></textarea>
+
+            <!-- label class="checkbox">
+                <input type="checkbox" class="private">
+                Private event &mdash; invitees only
+            </label -->
+        </div>
+
+        <div class="modal-footer">
+            <a href="#" class="btn cancel">Cancel</a>
+            <a href="#" class="btn btn-primary save">Create event</a>
+        </div>
+    </div>
+</template>

@@ -17,11 +17,11 @@ Template.inviteDialog.events({
 
 
 Template.inviteDialog.uninvited = () ->
-    party = Parties.findOne(Session.get("selected"))
-    if (not party)
-        return [];  # // party hasn't loaded yet
-    return Meteor.users.find({$nor: [{_id: {$in: party.invited}},
-                                   {_id: party.owner}]})
+    event = Events.findOne(Session.get("selected"))
+    if (not event)
+        return [];  # // event hasn't loaded yet
+    return Meteor.users.find({$nor: [{_id: {$in: event.invited}},
+                                   {_id: event.owner}]})
 
 
 Template.inviteDialog.displayName = () ->

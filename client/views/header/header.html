@@ -1,14 +1,21 @@
 <template name="header">       
-    <div class="center aligned header-wrapper">
-        <h1 class="huge center aligned ui header">
-            Victoria Pebbles Hiking Group
-            <!-- div class="sub header">
-                by <a class="unstyled link" href="https://github.com/neilhan">Pebbles Group</a>
-            </div -->          
-        </h1> 
-        
-        <div style="text-align:center">
-            <button class="basic ui resize icon button" style="halign:center"><i class="angle down icon"></i></button>
+    <div class="left aligned header-wrapper">
+        <div class="container">
+            <h1 class="huge left aligned ui header">
+                Victoria Pebbles Hiking Group
+                <!-- div class="sub header">
+                    by <a class="unstyled link" href="https://github.com/neilhan">Pebbles Group</a>
+                </div -->          
+            </h1> 
+
+            <a class="ui huge purple button" href="/">Home</a>
+            {{#if currentUser}}
+                <a class="ui huge purple button" id="addEvent" href="#">Post a new event</a>
+            {{/if}}
+            
+            <div style="text-align:center">
+                <button class="basic ui resize icon button" style="halign:center"><i class="angle down icon"></i></button>
+            </div>
         </div>
     </div>
 </template>

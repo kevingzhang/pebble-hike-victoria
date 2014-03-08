@@ -1,0 +1,45 @@
+
+<template name="eventItemRow">
+    <div class='row ' data-eventId="{{_id}}">
+        {{#if upcoming}}
+            <div class="ui left corner teal label">
+                <i class="star icon"></i>
+            </div>
+        {{/if}}
+        <!-- div class="col-xs-1" style="width:15px">
+            {{#if isSelected}}
+                <i class="angle down icon"></i>
+            {{else}}
+                <i class="angle up icon"></i>
+            {{/if}}
+        </div -->
+        <div class="col-xs-1" style="width:15px">
+            <i class="calendar icon"></i>
+        </div>
+        <div class="col-lg-3">
+            {{timeFormatted}}
+        </div>
+        <div class="col-lg-4">
+            <i class="map marker icon"></i>
+            {{title}}
+        </div>
+        <div class="col-lg-2">
+            <i class="user icon"></i>
+            {{initiator}}
+        </div>
+        <div class="col-lg-1">
+            <i class="users icon"></i>
+            {{rsvpsCount}}
+        </div>
+        <div class="col-xs-1">
+            {{#if isEditable}}
+                <div class="ui icon button" data-eventId="{{_id}}">
+                    <i class="pencil icon" data-eventId="{{_id}}"></i>
+                </div>
+            {{/if}}
+        </div>
+        <div class="col-lg-1">
+            <a href="{{pathFor 'eventDetailPage'}}" data-eventId="{{_id}}">See in detail page</a>
+        </div>
+    </div>
+</template> 

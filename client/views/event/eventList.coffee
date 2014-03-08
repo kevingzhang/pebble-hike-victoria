@@ -1,0 +1,4 @@
+Template.eventList.helpers({
+})
+
+

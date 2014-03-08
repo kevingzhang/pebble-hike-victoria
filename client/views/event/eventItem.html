@@ -1,0 +1,9 @@
+
+<template name="eventItem">
+        <div class="eventItem ui segment {{#unless upcoming}}history{{/unless}}" data-eventId="{{_id}}">
+            {{> eventItemRow}}
+                {{! -- #if isSelected --}}
+            {{> eventDetailsShort}}
+                {{!-- /if --}}
+        </div>
+</template>

@@ -10,15 +10,15 @@ Router.configure({
 
 
 HomeController = RouteController.extend({
-    template: 'partyPage'
+    template: 'eventPage'
     waitOn: () ->
         [
             Meteor.subscribe("directory"),
-            Meteor.subscribe("parties")
+            Meteor.subscribe("events")
         ]
     data: () ->
-        partyList: () ->
-            Parties.find({}, {sort: {hikeTime: -1}})
+        eventList: () ->
+            Events.find({}, {sort: {hikeTime: -1}})
 
 })
 
@@ -36,17 +36,20 @@ Router.map(
 
         @route( 'checkMap', { path:'/map/:_id'} )
 
-        # the partyDetailPage
+        # the eventDetailPage
         @route(
-            'partyDetailPage',
+            'eventDetailPage',
             {
                 path :  '/event/:_id',
-                template : 'details',
+                template : 'eventDetailPage',
+                waitOn : () ->
+                    [ Meteor.subscribe('events') ]
                 data: () ->
                     console.log("#{this.params._id}")  # ?????
-                    pty = Parties.findOne({})
-                    # pty = Parties.findOne(this.params._id)
-                    console.log("found party id: #{pty?._id}")
+                    pty = Events.findOne(this.params._id)
+
+                    # pty = Events.findOne(this.params._id)
+                    console.log("found event id: #{pty?._id}")
                     return pty
             }
         )
