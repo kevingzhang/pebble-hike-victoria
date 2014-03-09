@@ -147,9 +147,11 @@ gmaps =
 	initialize: () ->
 		console.log("[+] Intializing Google Maps...");
 		mapOptions = 
+			backgroundColor:'green'
 			zoom: 12
 			center: new google.maps.LatLng(48.46, -123.49)
-			mapTypeId: google.maps.MapTypeId.HYBRID
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+			scrollwheel:false
         
  
 		this.map = new google.maps.Map document.getElementById('map-canvas'),mapOptions

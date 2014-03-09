@@ -3,10 +3,7 @@ Router.configure({
 
 	
 	notFoundTemplate: 'notFound',
-	yieldTemplates: {
-		'header': { to: 'header' },
-		'footer': { to: 'footer' }
-	}
+	
 
 })
 
@@ -23,7 +20,10 @@ HomeController = RouteController.extend({
 	data: () ->
 		eventList: () ->
 			Events.find({}, {sort: {hikeTime: -1}})
-
+	yieldTemplates: {
+			'header': { to: 'header' },
+			'footer': { to: 'footer' }
+		}
 })
 
 
