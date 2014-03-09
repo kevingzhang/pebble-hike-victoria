@@ -56,18 +56,34 @@ input.chosen {
     background-color: #ddd;
 }
 
+// this is to find the center and do position the dialog
+.dialogContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -300px;
+    display: inline;
+}
+
 .addEventDlg {
-    left:50%;
-    top:10%;
-    height:500px;
-    display:block;
+    position: relative;
+    height: 500px;
+    min-height: 300px;
+    max-height: 400px;
+    width: 600px;
+    min-width: 400px;
+    display: inline;
 }
 
 .eventEditDialog {
-    left:50%;
-    top:10%;
-    height:500px;
-    display:block;
+    position: relative;
+    height: 500px;
+    min-height: 300px;
+    max-height: 400px;
+    width: 600px;
+    min-width: 400px;
+    display: inline;
 }
 
 .modal-body{

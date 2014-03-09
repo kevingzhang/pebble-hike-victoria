@@ -9,6 +9,7 @@ Router.configure({
 })
 
 
+# This is the eventPage, the home page Route Controller.
 HomeController = RouteController.extend({
     template: 'eventPage'
     waitOn: () ->
@@ -22,7 +23,7 @@ HomeController = RouteController.extend({
 
 })
 
-
+# The map for Router -----------------
 Router.map(
     () ->
         # the home page, default landing page
@@ -33,8 +34,6 @@ Router.map(
                 controller: HomeController
             }
         )
-
-        @route( 'checkMap', { path:'/map/:_id'} )
 
         # the eventDetailPage
         @route(
