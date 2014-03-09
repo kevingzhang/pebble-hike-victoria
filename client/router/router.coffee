@@ -1,6 +1,6 @@
 
 Router.configure({
-	layoutTemplate: 'basicLayout',
+	
 	notFoundTemplate: 'notFound',
 	yieldTemplates: {
 		'header': { to: 'header' },
@@ -11,6 +11,7 @@ Router.configure({
 
 HomeController = RouteController.extend({
 	template: 'eventPage'
+	layoutTemplate: 'basicLayout'
 	waitOn: () ->
 		[
 			Meteor.subscribe("directory"),
@@ -23,41 +24,6 @@ HomeController = RouteController.extend({
 })
 
 
-Router.map(
-	() ->
-		# the home page, default landing page
-		@route(
-			'home',
-			{
-				path :  '/',
-				controller: HomeController
-			}
-		)
-
-		@route( 'checkMap', { path:'/map/:_id'} )
-
-		# the eventDetailPage
-		@route(
-			'eventDetailPage',
-			{
-				path :  '/event/:_id',
-				template : 'eventDetailPage',
-				waitOn : () ->
-					[ Meteor.subscribe('events') ]
-				data: () ->
-					console.log("#{this.params._id}")  # ?????
-					pty = Events.findOne(this.params._id)
-
-					# pty = Events.findOne(this.params._id)
-					console.log("found event id: #{pty?._id}")
-					return pty
-			}
-		)
-
-
-)
-
-
 Router.map ()->
 	@route 'home',
 		path :  '/'
@@ -65,9 +31,11 @@ Router.map ()->
 	
 	@route 'checkMap', 
 		path:'/map/:_id'
+		layoutTemplate: 'basicLayout'
 
 	@route 'eventDetailPage',
 		path : '/event/:_id'
+		layoutTemplate: 'basicLayout'
 		template : 'eventDetailPage'
 		waitOn : () ->
 			Meteor.subscribe 'events'
@@ -80,3 +48,4 @@ Router.map ()->
 	@route 'newevent',
 		path: '/newevent'
 		template:'newEvent'
+		layoutTemplate: 'mobileLayout'
