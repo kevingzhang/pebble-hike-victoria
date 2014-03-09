@@ -18,7 +18,6 @@ coffeescript
 less
 jquery
 underscore
-madewith
 moment
 semantic-ui
 accounts-google

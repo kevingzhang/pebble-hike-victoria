@@ -32,25 +32,43 @@ HomeController = RouteController.extend({
 
 # The map for Router -----------------
 Router.map ()->
-    @route 'home',
-        path :  '/'
-        controller: HomeController
-    
-    @route 'checkMap', 
-        path:'/map/:_id'
+	@route 'home',
+		path :  '/'
+		controller: HomeController
+	
+	@route 'checkMap', 
+		path:'/map/:_id'
 
-    @route 'eventDetailPage',
-        path : '/event/:_id'
-        template : 'eventDetailPage'
-        waitOn : () ->
-            Meteor.subscribe 'events'
-        data: () ->
-            console.log "#{this.params._id}"  # ?????
-            pty = Events.findOne(this.params._id)
+	@route 'eventDetailPage',
+		path : '/event/:_id'
+		template : 'eventDetailPage'
+		waitOn : () ->
+			Meteor.subscribe 'events'
+		data: () ->
+			console.log "#{this.params._id}"  # ?????
+			pty = Events.findOne(this.params._id)
 
-            console.log "found event id: #{pty?._id}" 
-            return pty
-    @route 'newevent',
-        path: '/newevent'
-        template:'newEvent'
+			console.log "found event id: #{pty?._id}" 
+			return pty
+	@route 'newevent',
+		path: '/newevent'
+		template:'newEvent'
+		layoutTemplate: 'mobileLayout'
+		before:()->
+			Session.set 'map',false
+	@route 'eventeditmobile',
+		template:'eventEditMobile'
+		path: '/meventedit/:_id'
+		layoutTemplate: 'mobileLayout'
+		before:()->
+
+			Session.set 'map',false
+		waitOn:()->
+			Meteor.subscribe 'events'
+		data:()->
+			curEvent = Events.findOne @params._id
+			
+			if curEvent.owner isnt Meteor.userId()
+				Router.go 'home'
+			return curEvent
 
