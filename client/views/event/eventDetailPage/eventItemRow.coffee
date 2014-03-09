@@ -36,12 +36,6 @@ Template.eventItemRow.events({
 
 
 Template.eventItemRow.helpers({
-    isSelected: () ->
-        selectedEventId = Session.get 'selected'
-        if selectedEventId is @._id
-            return true  # "selectedEvent"
-        else
-            return false  # ""
 
     upcoming:()->
         moment().isBefore(moment(@hikeTime))
