@@ -64,6 +64,21 @@ Router.map ()->
 
 			Session.set 'map',false
 		waitOn:()->
+			Meteor.subscribe 'events', @params._id
+		data:()->
+			curEvent = Events.findOne @params._id
+			
+			if curEvent.owner isnt Meteor.userId()
+				Router.go 'home'
+			return curEvent
+	@route 'mobilehome',
+		template:'homeMobile'
+		path:'/m'
+		layoutTemplate: 'mobileLayout'
+		before:()->
+
+			
+		waitOn:()->
 			Meteor.subscribe 'events'
 		data:()->
 			curEvent = Events.findOne @params._id
@@ -71,4 +86,3 @@ Router.map ()->
 			if curEvent.owner isnt Meteor.userId()
 				Router.go 'home'
 			return curEvent
-
