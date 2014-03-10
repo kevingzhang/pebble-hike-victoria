@@ -5,22 +5,20 @@
 
 standard-app-packages
 preserve-inputs
-accounts-ui
-accounts-password
 d3
-bootstrap
 email
 accounts-facebook
 audit-argument-checks
-bootstrap-3
-iron-router
 coffeescript
 less
 jquery
 underscore
 madewith
 moment
-semantic-ui
 accounts-google
-iron-router-progress
+accounts-password
+bootstrap-3
+accounts-ui-bootstrap-3
+iron-router
 bootstrap-datetimepicker
+iron-router-progress

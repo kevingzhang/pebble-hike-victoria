@@ -1,23 +1,11 @@
 <template name="eventPage">
-    {{#if showCreateDialog}}
-        {{> createDialog}}
-    {{/if}}
 
-    {{#if showEventEditDialog}}
-        {{#with selectedEvent}}
-            {{> eventEditDialog}}
-        {{/with}}
-    {{/if}}
 
-    {{#if showInviteDialog}}
-        {{> inviteDialog}}
-    {{/if}}
+	{{> eventList}}
 
-    {{> eventList}}
-
-    <!-- div class="row">
-        > details
-    </div -->
+	<!-- div class="row">
+		> details
+	</div -->
 </template>
 
 

@@ -2,43 +2,43 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "bootstrap-3": {},
-      "iron-router": {},
       "moment": {},
-      "semantic-ui": {},
-      "iron-router-progress": {},
-      "bootstrap-datetimepicker": {}
+      "bootstrap-3": {},
+      "accounts-ui-bootstrap-3": {},
+      "iron-router": {},
+      "bootstrap-datetimepicker": {},
+      "iron-router-progress": {}
     },
     "packages": {
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
         "tag": "v3.1.1-1",
         "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
+      },
+      "accounts-ui-bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
+        "tag": "v0.2.6",
+        "commit": "f3ee0ef6bc506314e19585550b4f9f5620c4ada6"
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.6.4",
         "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
       },
-      "moment": {
-        "git": "https://github.com/acreeger/meteor-moment.git",
-        "tag": "v2.5.1",
-        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
-      },
-      "semantic-ui": {
-        "git": "https://github.com/nooitaf/meteor-semantic-ui.git",
-        "tag": "v0.14.0",
-        "commit": "36a98dcdc50216949d2f55c8bebc62ef5cbb29ee"
+      "bootstrap-datetimepicker": {
+        "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
+        "tag": "v0.0.6",
+        "commit": "728e5d603c377652e6909e180358364c46ce95ff"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
         "tag": "v0.2.0",
         "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
-      },
-      "bootstrap-datetimepicker": {
-        "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
-        "tag": "v0.0.6",
-        "commit": "728e5d603c377652e6909e180358364c46ce95ff"
       }
     }
   }

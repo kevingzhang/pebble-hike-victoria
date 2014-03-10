@@ -1,55 +1,57 @@
 
 <template name="eventEditDialog">
-    <div class="mask"> </div>
-    <div class="dialogContainer modal modal-dialog">
-        <div class="eventEditDialog modal-dialog ">
-            <div class="modal-header">
-                <button type="button" class="close cancel">&times;</button>
-                <h3>Changes hiking plan</h3>
-            </div>
+	<div class="modal fade" id="createDialog"
+		tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close cancel">&times;</button>
+					<h3>Changes hiking plan</h3>
+				</div>
 
-            <div id="dlg" class="modal-body">
-                {{#if error}}
-                    <div class="alert alert-error">{{error}}</div>
-                {{/if}}
-                <div class='input-group' id='datetimepicker'>
-                    <span class='input-group-addon'>Date and Time</span>
-                    <!-- input type="" class="form-control dlgTime" 
-                    class="input-append date" 
-                    -->
-                    <div id="datetimepicker_1">
-                        <input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime"
-                            value="{{ hikeTimeString }}"></input>
-                    </div>
-                    <span class="input-group-addon add-on" style="vertical-align: middle">
-                      <i class="icon" data-time-icon="icon-time" data-date-icon="icon-calendar" ></i>
-                    </span>
-                </div>
-                <div class='input-group'>
-                    <span class='input-group-addon'>Place (text)</span>
-                    <input type=" " class="form-control dlgTitle"
-                        value="{{title}}">
-                </div>
-                <div class='input-group'>
-                    <span class='input-group-addon'>Map link (google map URL)</span>
-                    <input type="" class="form-control maplink" 
-                        value="{{maplink}}">
-                </div>
+				<div class="modal-body">
+					{{#if error}}
+						<div class="alert alert-error">{{error}}</div>
+					{{/if}}
+					<div class='input-group' id='datetimepicker'>
+						<span class='input-group-addon'>Date and Time</span>
+						<!-- input type="" class="form-control dlgTime" 
+						class="input-append date" 
+						-->
+						<div id="datetimepicker_1">
+							<input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime"
+								value="{{ hikeTimeString }}"></input>
+						</div>
+						<span class="input-group-addon add-on" style="vertical-align: middle">
+							<i class="icon" data-time-icon="icon-time" data-date-icon="icon-calendar" ></i>
+						</span>
+					</div>
+					<div class='input-group'>
+						<span class='input-group-addon'>Place (text)</span>
+						<input type=" " class="form-control dlgTitle"
+							value="{{title}}">
+					</div>
+					<div class='input-group'>
+						<span class='input-group-addon'>Map link (google map URL)</span>
+						<input type="" class="form-control maplink" 
+							value="{{maplink}}">
+					</div>
 
+					<label>Description</label>
 
-                <label>Description</label>
+					<textarea class="form-control description">{{description}}</textarea>
 
-                <textarea class="form-control description">{{description}}</textarea>
+					<!-- label class="checkbox">
+						<input type="checkbox" class="private" >
+						Private event &mdash; invitees only
+					</label -->
+				</div>
 
-                <!-- label class="checkbox">
-                    <input type="checkbox" class="private" >
-                    Private event &mdash; invitees only
-                </label -->
-            </div>
-
-            <div class="modal-footer">
-                <a href="#" class="btn cancel">Cancel changes</a>
-                <a href="#" class="btn btn-primary save">Save changes</a>
-            </div>
+				<div class="modal-footer">
+					<a href="#" class="btn cancel">Cancel changes</a>
+					<a href="#" class="btn btn-primary save">Save changes</a>
+				</div>
+			</div> <!-- modal-content -->
         </div>
+	</div>
 </template>

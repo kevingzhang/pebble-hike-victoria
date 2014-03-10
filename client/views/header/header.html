@@ -1,22 +1,34 @@
-<template name="header">       
-    <div class="left aligned header-wrapper">
-        <div class="container">
-            <h1 class="huge left aligned ui header">
-                Victoria Pebbles Hiking Group
-                <!-- div class="sub header">
-                    by <a class="unstyled link" href="https://github.com/neilhan">Pebbles Group</a>
-                </div -->          
-            </h1> 
+<template name="header">
+		
+	{{> createDialog}}
 
-            <a class="ui huge purple button" href="/">Home</a>
-            {{#if currentUser}}
-                <a class="ui huge purple button" id="addEvent" href="#">Post a new event</a>
-            {{/if}}
-            
-            <div style="text-align:center">
-                <button class="basic ui resize icon button" style="halign:center"><i class="angle down icon"></i></button>
-            </div>
-        </div>
-    </div>
+	{{#with selectedEvent}}
+		{{> eventEditDialog}}
+	{{/with}}
+
+	<div class="left aligned header-wrapper">
+		<div class="container">
+			<h1 class="huge left aligned ui header">
+				Victoria Pebbles Hiking Group
+				<!-- div class="sub header">
+					by <a class="unstyled link" href="https://github.com/neilhan">Pebbles Group</a>
+				</div -->
+			</h1> 
+
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary" id="homeButton">Home</a>
+				{{#if currentUser}}
+					<button type="button" class="btn btn-primary" id="addEvent"
+						data-toggle="modal" data-target="#createDialog"
+						>Post a new event</button>
+				{{/if}}
+			</div>
+		
+			<div style="text-align:center">
+				<button class="basic ui resize icon button" style="halign:center"><i class="angle down icon"></i></button>
+			</div>
+		</div> <!-- container -->
+	</div>  <!-- header-wrapper -->
+
 </template>
 

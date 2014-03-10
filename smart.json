@@ -1,10 +1,10 @@
 {
   "packages": {
-    "bootstrap-3": {},
-    "iron-router": {},
     "moment": {},
-    "semantic-ui": {},
-    "iron-router-progress": {},
-    "bootstrap-datetimepicker": {}
+    "bootstrap-3": {},
+    "accounts-ui-bootstrap-3": {},
+    "iron-router": {},
+    "bootstrap-datetimepicker": {},
+    "iron-router-progress": {}
   }
 }

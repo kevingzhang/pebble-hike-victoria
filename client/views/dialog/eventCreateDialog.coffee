@@ -1,15 +1,20 @@
 Template.createDialog.events
-	'click .save': (event, template) ->
-		hikeTimeString = template.find(".dlgTime").value
+	'click #XXXsaveButton': (e, t) ->
+		e.preventDefault()
+		# clean up the error message
+		Session.set "createError", null
+
+		hikeTimeString = t.find(".dlgTime").value
 		hikeTime = moment hikeTimeString, 'YYYY-MM-DD h:mm a'
 		unless hikeTime.isValid()
 			Session.set "createError", "Hike time should be in format of MM-DD-YYYY"
+			e.stopPropagation()
 			return
 
-		title = template.find(".dlgTitle").value
-		description = template.find(".description").value
+		title = t.find(".dlgTitle").value
+		description = t.find(".description").value
 		publicAccess = true  # not template.find(".private").checked
-		maplink = template.find(".maplink").value
+		maplink = t.find(".maplink").value
 
 		if (title.length > 100)
 			Session.set "createError","Title too long"
@@ -20,7 +25,7 @@ Template.createDialog.events
 		unless Meteor.userId()
 			Session.set "createError", "You must be logged in"
 
-		if (title.length and description.length)
+		if (not Session.get('createError')) and (title.length and description.length)
 			id = Events.insert
 				owner: Meteor.userId()
 				title: title
@@ -34,20 +39,24 @@ Template.createDialog.events
 			Session.set "selected", id
 			if (not publicAccess and Meteor.users.find().count() > 1)
 				openInviteDialog()
-			Session.set "showCreateDialog", false
 		else
 			Session.set "createError","It needs a title and a description, or why bother?"
+		if Session.get('createError')
+			$("#createDialog").modal()
+		else
+			$("#createDialog").modal('hide')
+
 
 	'click .cancel': ()->
 		Session.set "showCreateDialog", false
 
 
 Template.createDialog.rendered = () ->
-    $('#datetimepicker').datetimepicker({
-        language: 'pt-BR',
-        format: 'yyyy-MM-dd hh:mm PP',
-        pick12HourFormat: true
-    })
+	$('#datetimepicker').datetimepicker({
+		language: 'pt-BR',
+		format: 'yyyy-MM-dd hh:mm PP',
+		pick12HourFormat: true
+	})
 
 
 Template.createDialog.error = ()->
