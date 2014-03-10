@@ -1,31 +1,40 @@
 <template name="homeMobile">
+	<div class='locationWarning'>Please allow the browser's location request and continue</div>
 	<div id="map-canvas"></div>
-	{{#each hikeEvents}}
-	<div class='container hikeEventList'>
+		<div class='container hikeEventList'>
 
-	<div data-eventId={{_id}} class="row testevent">
-		<div class='col-xs-1 noRightPadding'>
-			
-		{{#if showLocationOnMapActive this}}
-		<span class='glyphicon glyphicon-map-marker alignRight'/>
+		{{#each hikeEvents}}
 		
-		{{/if}}
-	
+		<div data-eventId={{_id}} class="row testevent">
+			<div class='col-xs-1 noRightPadding'>
+				
+			{{#if showLocationOnMapActive this}}
+			<span class='glyphicon glyphicon-map-marker alignRight'/>
+			
+			{{/if}}
+		
+			</div>
+			<div class='col-xs-3'>
+				{{title}}
+			</div>
+			<div class='col-xs-3'>
+				{{ hikeTimeString this}}
+			</div>
+			<div class='col-xs-4'>
+				{{description}}
+			</div>
+			<div class='col-xs-1'>
+			{{#if activeEvent this}}
+				<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail'/></a>
+			{{/if}}
+			</div>
 		</div>
-		<div class='col-xs-3'>
-			{{title}}
-		</div>
-		<div class='col-xs-3'>
-			{{ hikeTimeString this}}
-		</div>
-		<div class='col-xs-4'>
-			{{description}}
-		</div>
-		<div class='col-xs-1'>
-		{{#if activeEvent this}}
-			<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail'/></a>
-		{{/if}}
+		{{/each}}
+		<div class='row'>
+			<div class='col-xs-1 noRightPadding'>
+				<a href='/newevent'><span class='glyphicon glyphicon-plus alignRight'/></a>
+			</div>
+			
 		</div>
 	</div>
-	{{/each}}
 </template>
