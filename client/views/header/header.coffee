@@ -7,5 +7,7 @@ Template.header.events({
 
 	'click #homeButton' : () ->
 		Router.go('home')
+	'click #addEvent':(e,t)->
+		Session.set "createError", ''
 })
 

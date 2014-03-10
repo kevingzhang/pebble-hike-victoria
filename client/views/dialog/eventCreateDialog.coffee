@@ -1,9 +1,10 @@
 Template.createDialog.events
 	'click #saveButton': (e, t) ->
 		e.preventDefault()
-		# clean up the error message
-		Session.set "createError", null
 
+		# clean up the error message
+		Session.set "createError", ''
+		
 		hikeTimeString = t.find(".dlgTime").value
 		hikeTime = moment hikeTimeString, 'YYYY-MM-DD h:mm a'
 		unless hikeTime.isValid()
@@ -24,7 +25,7 @@ Template.createDialog.events
 
 		unless Meteor.userId()
 			Session.set "createError", "You must be logged in"
-
+		Session.set "createError", ''
 		if (not Session.get('createError')) and (title.length and description.length)
 			id = Events.insert
 				owner: Meteor.userId()
@@ -41,14 +42,15 @@ Template.createDialog.events
 				openInviteDialog()
 		else
 			Session.set "createError","It needs a title and a description, or why bother?"
-		if Session.get('createError')
-			$("#createDialog").modal()
-		else
-			$("#createDialog").modal('hide')
+		# if Session.get('createError')
+		# 	$("#createDialog").modal()
+		# else
+		# 	$("#createDialog").modal('hide')
 
 
 	'click .cancel': ()->
-		Session.set "showCreateDialog", false
+		Session.set "createError", ''
+		
 
 
 Template.createDialog.rendered = () ->
