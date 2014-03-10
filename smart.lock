@@ -7,7 +7,8 @@
       "moment": {},
       "semantic-ui": {},
       "iron-router-progress": {},
-      "bootstrap-datetimepicker": {}
+      "bootstrap-datetimepicker": {},
+      "device-detection": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -39,6 +40,11 @@
         "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
         "tag": "v0.0.6",
         "commit": "728e5d603c377652e6909e180358364c46ce95ff"
+      },
+      "device-detection": {
+        "git": "https://github.com/mystor/meteor-device-detection.git",
+        "tag": "v0.1.5",
+        "commit": "4c7c6972aa3568062bb03bc0cabbade8874ce836"
       }
     }
   }

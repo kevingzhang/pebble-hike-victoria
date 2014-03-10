@@ -35,6 +35,9 @@ Router.map ()->
 	@route 'home',
 		path :  '/'
 		controller: HomeController
+		before:()->
+			if Meteor.Device.isTablet() or Meteor.Device.isPhone()
+				Router.go 'homeMobile'
 	
 	@route 'checkMap', 
 		path:'/map/:_id'
@@ -81,5 +84,6 @@ Router.map ()->
 		waitOn:()->
 			Meteor.subscribe 'events'
 		data:()->
+
 			return hikeEvents:Events.find()
 

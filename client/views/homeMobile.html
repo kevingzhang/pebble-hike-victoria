@@ -1,6 +1,31 @@
 <template name="homeMobile">
 	<div id="map-canvas"></div>
 	{{#each hikeEvents}}
-	<div>{{_id}}</div><div>{{showLocationOnMap this}}</div>
+	<div class='container hikeEventList'>
+
+	<div data-eventId={{_id}} class="row testevent">
+		<div class='col-xs-1 noRightPadding'>
+			
+		{{#if showLocationOnMapActive this}}
+		<span class='glyphicon glyphicon-map-marker alignRight'/>
+		
+		{{/if}}
+	
+		</div>
+		<div class='col-xs-3'>
+			{{title}}
+		</div>
+		<div class='col-xs-3'>
+			{{ hikeTimeString this}}
+		</div>
+		<div class='col-xs-4'>
+			{{description}}
+		</div>
+		<div class='col-xs-1'>
+		{{#if activeEvent this}}
+			<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail'/></a>
+		{{/if}}
+		</div>
+	</div>
 	{{/each}}
 </template>
