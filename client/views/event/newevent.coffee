@@ -141,7 +141,7 @@ Template.map.destroyed = ()->
 	Session.set 'map',false
 Template.map.events
 
-gmaps = 
+@gmaps = 
 	# map object
 	map: null
 	#// google markers objects
@@ -153,18 +153,16 @@ gmaps =
 	#// add a marker given our formatted marker data object
 	curMarker: null
 
-	addMarker: (marker)->
-		console.log "inside addMarker #{JSON.stringify marker}"
-		gLatLng = new google.maps.LatLng(marker.lat, marker.lng)
+	addMarker: (gLatLng, title)->
 		gMarker = new google.maps.Marker
 			position: gLatLng
 			map: this.map
-			title: marker.title
+			title: title
 			#// animation: google.maps.Animation.DROP,
 			icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 		@latLngs.push(gLatLng)
 		@markers.push(gMarker)
-		@markerData.push(marker)
+		@markerData.push(gMarker)
 		return gMarker
 	#// calculate and move the bound box based on our marker
 	calcBounds: ()->

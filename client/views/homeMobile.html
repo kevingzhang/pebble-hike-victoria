@@ -1,0 +1,6 @@
+<template name="homeMobile">
+	<div id="map-canvas"></div>
+	{{#each hikeEvents}}
+	<div>{{_id}}</div><div>{{showLocationOnMap this}}</div>
+	{{/each}}
+</template>
