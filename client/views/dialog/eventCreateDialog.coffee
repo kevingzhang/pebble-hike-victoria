@@ -1,5 +1,5 @@
 Template.createDialog.events
-	'click #XXXsaveButton': (e, t) ->
+	'click #saveButton': (e, t) ->
 		e.preventDefault()
 		# clean up the error message
 		Session.set "createError", null
