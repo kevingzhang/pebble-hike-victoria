@@ -12,8 +12,9 @@ Events.allow
             else
                 return true #not owner, but allow field
         else
-            allowed = ["title", "description","comments", "maplink","hikeTime"]
+            allowed = ["title", "description","comments", "location","hikeTime"]
             if _.difference(fields, allowed).length
+                console.log "update denied because #{_.difference(fields, allowed).length}"
                 return false#; // tried to write to forbidden field
                 ###
                 A good improvement would be to validate the type of the new

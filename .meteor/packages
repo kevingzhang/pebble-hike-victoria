@@ -13,7 +13,6 @@ coffeescript
 less
 jquery
 underscore
-madewith
 moment
 accounts-google
 accounts-password
@@ -22,3 +21,4 @@ accounts-ui-bootstrap-3
 iron-router
 bootstrap-datetimepicker
 iron-router-progress
+device-detection
