@@ -23,13 +23,16 @@
 		@markerData.push(gMarker)
 		return gMarker
 	updateMarker: (gMarker, gLatLng, title, active)->
-		unless gMarker.getPosition().equals gLatLng
-			gMarker.setPosition gLatLng 
-		unless gMarker.getTitle() is title
-			gMarker.setTitle title
-		setToAnimation = if active then google.maps.Animation.BOUNCE else null
-		unless gMarker.getAnimation() is setToAnimation
-			gMarker.setAnimation setToAnimation
+		if gLatLng?
+			unless gMarker.getPosition().equals gLatLng
+				gMarker.setPosition gLatLng 
+		if title?
+			unless gMarker.getTitle() is title
+				gMarker.setTitle title
+		if active?
+			setToAnimation = if active then google.maps.Animation.BOUNCE else null
+			unless gMarker.getAnimation() is setToAnimation
+				gMarker.setAnimation setToAnimation
 
 	#// calculate and move the bound box based on our marker
 	calcBounds: ()->

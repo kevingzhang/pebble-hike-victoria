@@ -10,7 +10,6 @@ Meteor.publish "events", ()->
 		{sort:{hikeTime:-1}})
 	
 Meteor.publish "singleEvent", (eid)->
-	console.log "eid is #{eid}"
 	check eid, String
 	if eid?
 		return Events.find _id:eid
