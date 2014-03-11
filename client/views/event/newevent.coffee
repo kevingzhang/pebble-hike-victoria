@@ -62,6 +62,10 @@ Template.newEvent.rendered = ()->
 Template.newEvent.error = ()->
 	Session.get "createError"
 
+Template.eventEditMobile.helpers
+	ownerof:(hikeEvent)->
+		hikeEvent.owner is Meteor.userId()
+
 Template.eventEditMobile.events
 	'click .update': (event, template) ->
 		hikeTimeString = template.find(".dlgTime").value
@@ -94,12 +98,12 @@ Template.eventEditMobile.events
 			}
 			console.log "#{JSON.stringify modifier}"
 			Events.update template.data._id, modifier
-				
+			Router.go 'home'
 		else
 			Session.set "createError","It needs a title and a description, or why bother?"
 
 	'click .cancel': ()->
-		
+		Router.go 'homeMobile'
 
 Template.eventEditMobile.rendered = ()->
 	$('#datetimepicker').datetimepicker 

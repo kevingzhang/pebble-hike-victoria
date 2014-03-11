@@ -5,7 +5,7 @@ Deps.autorun ()->
 	if loc.error?
 		return
 	else
-		if gmaps?
+		if gmaps? and google?
 			newLatlon = new google.maps.LatLng(loc.coords.latitude, loc.coords.longitude)
 			if gmaps.curUserLocation?
 				gmaps.updateMarker(gmaps.curUserLocation, newLatlon)
@@ -47,10 +47,18 @@ Template.homeMobile.helpers
 					hikeEvent.gMarker = newCreatedMarker
 		return if active then 'active' else ''
 	hikeTimeString: (hikeEvent) ->
-		moment(hikeEvent.hikeTime).format('MM-DD h:mm a')
+		moment(hikeEvent.hikeTime).format('MM-DD')
 
 	activeEvent: (hikeEvent)->
 		if hikeEvent._id is Session.get 'curEventId' then 'active' else ''
+
+	ownerof:(hikeEvent)->
+		hikeEvent.owner is Meteor.userId()
+
+	joinedin:(hikeEvent)->
+		_.contains hikeEvent.rsvp, Meteor.userId()
+
+
 Template.homeMobile.events
 
 	'click .testevent':(e,t)->
@@ -61,8 +69,19 @@ Template.homeMobile.events
 	'click .openDetail':(e,t)->
 		eventId = e.target.getAttribute 'data-eventId'
 		Router.go "/meventedit/#{eventId}"
-
-
+	'click .remove-event':(e,t)->
+		eventId = e.target.getAttribute 'data-eventId'
+		Events.remove eventId
+	'click .join-in':(e,t)->
+		eventId = e.target.getAttribute 'data-eventId'
+		Events.update eventId, $push:{rsvp:Meteor.userId()}
+		alert 'You have joined this hike'
+	'click .join-out':(e,t)->
+		unless confirm 'Are you sure you are not going?'
+			return
+		eventId = e.target.getAttribute 'data-eventId'
+		Events.update eventId, $pull:{rsvp:Meteor.userId()}
+		
 
 getLocation : ()->
 		loc = Session.get 'location'

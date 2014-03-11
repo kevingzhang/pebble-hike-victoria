@@ -1,38 +1,45 @@
 <template name="homeMobile">
 	<div class='locationWarning'>Please allow the browser's location request and continue</div>
 	<div id="map-canvas"></div>
+		
+		{{#isolate}}
 		<div class='container hikeEventList'>
+			<ul class="list-group">
+				{{#each hikeEvents}}
+				<li data-eventId={{_id}} class="list-group-item row testevent">
+					<div class='col-xs-1'>
+					{{#if showLocationOnMapActive this}}
+						<span class='glyphicon glyphicon-map-marker touch-icon alignRight'/>
+					{{/if}}
+					</div>
+					<div class='col-xs-6 title'>
+						{{title}}
+					</div>
+					<div class='col-xs-2 time'>
+						{{ hikeTimeString this}}
+					</div>
+					<div class='col-xs-3'>
 
-		{{#each hikeEvents}}
-		
-		<div data-eventId={{_id}} class="row testevent">
-			<div class='col-xs-1 noRightPadding'>
-				
-			{{#if showLocationOnMapActive this}}
-			<span class='glyphicon glyphicon-map-marker alignRight'/>
-			
-			{{/if}}
-		
-			</div>
-			<div class='col-xs-3'>
-				{{title}}
-			</div>
-			<div class='col-xs-3'>
-				{{ hikeTimeString this}}
-			</div>
-			<div class='col-xs-4'>
-				{{description}}
-			</div>
-			<div class='col-xs-1'>
-			{{#if activeEvent this}}
-				<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail'/></a>
-			{{/if}}
-			</div>
+					{{#if activeEvent this}}
+					{{#if ownerof this}}
+					<span data-eventId="{{_id}}" class='glyphicon glyphicon-trash remove-event touch-icon'/></a>
+					{{/if}}
+					{{#if joinedin this}}
+					<span data-eventId="{{_id}}" class='glyphicon glyphicon-log-out join-out touch-icon'/></a>
+					{{else}}
+					<span data-eventId="{{_id}}" class='glyphicon glyphicon-log-in join-in touch-icon'/></a>
+					{{/if}}
+					<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail touch-icon'/></a>
+					{{/if}}
+					</div>
+				</li>
+				{{/each}}
+			</ul>
 		</div>
-		{{/each}}
+		{{/isolate}}
 		<div class='row'>
 			<div class='col-xs-1 noRightPadding'>
-				<a href='/newevent'><span class='glyphicon glyphicon-plus alignRight'/></a>
+				<a href='/newevent'><span class='glyphicon glyphicon-plus alignRight touch-icon'/></a>
 			</div>
 			
 		</div>
