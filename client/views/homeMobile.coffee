@@ -4,9 +4,14 @@ Deps.autorun ()->
 		return
 	if loc.error?
 		return
+	unless loc.coords?
+		return
 	else
 		u = Meteor.user()
 		if u?
+			locInfo = {t:loc.timestamp, lat:loc.coords.latitude, lon:loc.coords.longitude}
+			Meteor.users.update Meteor.userId(), $set:{'profile.lastLocation': locInfo}
+
 			if u.profile?
 				if u.profile.name?
 					userName = u.profile.name
@@ -24,6 +29,8 @@ Deps.autorun ()->
 			}, (e,r)->
 				if e?
 					console.log e
+
+		
 
 
 		if gmaps? and google?

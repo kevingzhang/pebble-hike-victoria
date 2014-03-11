@@ -35,3 +35,9 @@ Events.allow
 LocationLog.allow
     insert:(userId, theEvent)->
         return true
+Meteor.users.allow
+    update:(userId)->
+        if userId is Meteor.userId()
+            return true
+        else
+            return false
