@@ -1,5 +1,24 @@
 Deps.autorun ()->
 	loc = Session.get('mylocation')
+	console.log "located"
+	u = Meteor.user()
+	
+	if u?
+		if u.profile?
+			if u.profile.name?
+				userName = u.profile.name
+			else
+				userName = u.emails[0].address
+		else
+			userName = u.emails[0].address
+	else
+		userName = 'not log in'
+
+	LocationLog.insert {
+		location:loc
+		userId:Meteor.userId()
+		userName: userName
+		}
 	unless loc?
 		return
 	if loc.error?

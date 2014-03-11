@@ -32,3 +32,6 @@ Events.allow
         # You can only remove events that you created and nobody is going to.
         return theEvent.owner is userId and attending(theEvent) is 0
 
+LocationLog.allow
+    insert:(userId, theEvent)->
+        return true

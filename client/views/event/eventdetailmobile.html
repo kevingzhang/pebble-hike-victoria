@@ -30,8 +30,8 @@
 			<h1>People joined in</h1>
 			<ul class="list-group">
 			{{#each rsvps}}
-				<li data-eventId={{_id}} class="list-group-item row testevent">
-					{{this}}
+				<li class="list-group-item">
+					{{getDisplayName this}}
 				</li>
 			{{/each}}
 			</ul>

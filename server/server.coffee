@@ -15,5 +15,9 @@ Meteor.publish "singleEvent", (eid)->
 		return Events.find _id:eid
 	else 
 		return null
+Meteor.publish "users", ()->
+	return Meteor.users.find()
 
-		
+Meteor.publish 'recentLocationLog', ()->
+	return Meteor.LocationLog.find()
+

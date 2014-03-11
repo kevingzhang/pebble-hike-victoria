@@ -33,6 +33,8 @@ Router.map ()->
 	@route 'home',
 		path :  '/'
 		controller: HomeController
+		waitOn:()->
+			Meteor.subscribe 'users'
 		before:()->
 			if Meteor.Device.isTablet() or Meteor.Device.isPhone()
 				Router.go 'homeMobile'
@@ -78,6 +80,21 @@ Router.map ()->
 		before:()->
 
 			Session.set 'map',false
+			if navigator.geolocation
+				Session.set 'mylocation', {error:'Locating... please wait'}
+				navigator.geolocation.getCurrentPosition (position)->
+					Session.set 'mylocation', position
+					,
+					(error)->
+						switch error.code
+							when error.PERMISSION_DENIED then Session.set 'location', {error:"User denied the request for Geolocation."}
+							when error.POSITION_UNAVAILABLE then Session.set 'location', {error:"Location information is unavailable."}
+							when error.TIMEOUT then Session.set 'location', {error:"The request to get user location timed out."}
+							when error.UNKNOWN_ERROR then Session.set 'location', {error:"An unknown error occurred."}
+							else Session.set 'mylocation', {error:"Out of range error"}
+
+			else
+				Session.set 'mylocation', {error: 'Not supported browser'}
 		waitOn:()->
 			Meteor.subscribe 'singleEvent', @params._id
 		data:()->
@@ -87,6 +104,11 @@ Router.map ()->
 		template:'homeMobile'
 		path:'/m'
 		layoutTemplate: 'mobileLayout'
+		waitOn:()->
+			[Meteor.subscribe 'users'
+			,
+			Meteor.subscribe 'recentLocationLog'
+			]
 		before:()->
 			Session.set 'map', null
 			if navigator.geolocation
