@@ -34,11 +34,12 @@ Template.newEvent.events
 				inviated:[]
 				rsvps:[]
 				location: {lat:gmaps.curMarker.getPosition().lat(), lng:gmaps.curMarker.getPosition().lng()}
+			Router.go 'homeMobile'
 		else
 			Session.set "createError","It needs a title and a description, or why bother?"
 
 	'click .cancel': ()->
-		Session.set "showCreateDialog", false
+		Router.go 'homeMobile'
 
 
 Template.newEvent.rendered = ()->

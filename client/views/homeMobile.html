@@ -1,4 +1,7 @@
 <template name="homeMobile">
+	<div class='container'>
+	{{>nevBar}}
+	</div>
 	<div class='locationWarning'>Please allow the browser's location request and continue</div>
 	<div id="map-canvas"></div>
 		
@@ -43,11 +46,13 @@
 			</ul>
 		</div>
 		{{/isolate}}
-		<div class='row'>
-			<div class='col-xs-1 noRightPadding'>
-				<a href='/newevent'><span class='glyphicon glyphicon-plus alignRight touch-icon'/></a>
-			</div>
+		<div class='container add-event-container'>
+			<button class='btn btn-default add-event-btn' >
+				
+				<span class='glyphicon glyphicon-plus touch-icon'/>Add new event
 			
+				
+			</button>
 		</div>
 	</div>
 </template>

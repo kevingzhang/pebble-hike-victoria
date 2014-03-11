@@ -126,7 +126,12 @@ Template.homeMobile.events
 			return
 		eventId = e.target.getAttribute 'data-eventId'
 		Events.update eventId, $pull:{rsvps:Meteor.userId()}
-		
+	'click .add-event-btn':(e,t)->
+		e.preventDefault()
+		unless Meteor.userId()?
+			alert ("please login first")
+			return Route.go 'homeMobile'
+		Router.go 'newevent'
 
 getLocation : ()->
 		loc = Session.get 'location'
