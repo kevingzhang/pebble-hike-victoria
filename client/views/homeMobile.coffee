@@ -54,7 +54,7 @@ Template.homeMobile.helpers
 					google.maps.event.addListener newCreatedMarker,'click',()->
 						Session.set 'curEventId', @hikeEventId
 						
-					infoTitle = "<a href='/meventedit/#{hikeEvent._id}'>#{hikeEvent.title}/#{moment(hikeEvent.hikeTime).format('MM-DD')}</a>"
+					infoTitle = "<a href='/meventdetail/#{hikeEvent._id}'>#{hikeEvent.title}/#{moment(hikeEvent.hikeTime).format('MM-DD')}</a>"
 					infowindow = new google.maps.InfoWindow content:infoTitle
 					hikeEvent.infowindow = infowindow
 
@@ -69,7 +69,7 @@ Template.homeMobile.helpers
 		hikeEvent.owner is Meteor.userId()
 
 	joinedin:(hikeEvent)->
-		_.contains hikeEvent.rsvp, Meteor.userId()
+		_.contains hikeEvent.rsvps, Meteor.userId()
 
 
 Template.homeMobile.events
@@ -79,21 +79,24 @@ Template.homeMobile.events
 		curEventId = e.currentTarget.getAttribute 'data-eventId'
 		if curEventId?
 			Session.set 'curEventId', curEventId
-	'click .openDetail':(e,t)->
+	'click .updateevent':(e,t)->
 		eventId = e.target.getAttribute 'data-eventId'
 		Router.go "/meventedit/#{eventId}"
+	'click .openDetail':(e,t)->
+		eventId = e.target.getAttribute 'data-eventId'
+		Router.go "/meventdetail/#{eventId}"
 	'click .remove-event':(e,t)->
 		eventId = e.target.getAttribute 'data-eventId'
 		Events.remove eventId
 	'click .join-in':(e,t)->
 		eventId = e.target.getAttribute 'data-eventId'
-		Events.update eventId, $push:{rsvp:Meteor.userId()}
+		Events.update eventId, $push:{rsvps:Meteor.userId()}
 		alert 'You have joined this hike'
 	'click .join-out':(e,t)->
 		unless confirm 'Are you sure you are not going?'
 			return
 		eventId = e.target.getAttribute 'data-eventId'
-		Events.update eventId, $pull:{rsvp:Meteor.userId()}
+		Events.update eventId, $pull:{rsvps:Meteor.userId()}
 		
 
 getLocation : ()->

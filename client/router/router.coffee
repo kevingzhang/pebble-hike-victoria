@@ -71,6 +71,18 @@ Router.map ()->
 			if curEvent.owner isnt Meteor.userId()
 				Router.go 'home'
 			return curEvent
+	@route 'eventdetailmobile',
+		template:'eventDetailMobile'
+		path: '/meventdetail/:_id'
+		layoutTemplate: 'mobileLayout'
+		before:()->
+
+			Session.set 'map',false
+		waitOn:()->
+			Meteor.subscribe 'singleEvent', @params._id
+		data:()->
+			curEvent = Events.findOne @params._id
+			return curEvent
 	@route 'homeMobile',
 		template:'homeMobile'
 		path:'/m'

@@ -1,0 +1,46 @@
+
+<Template name='eventDetailMobile'>
+	{{#if error}}
+		<div class="alert alert-error">{{error}}</div>
+	{{/if}}
+	<div id="hikeEventDetail">
+		
+		<div class='title'>{{title}}</div>
+		<a href="/meventedit/{{_id}}"><span class='glyphicon glyphicon-cog gotoUpdate'/></a>
+	</div>
+	<div>
+		{{> map}}
+	</div>
+	{{#isolate}}
+	<div class='container'>
+		<div >{{hikeTimeString}}</div>
+		<div>{{description}}</div>
+		{{#if joinedin this}}
+		<div>
+			You have joined this hike
+		</div>
+		<button data-eventId="{{_id}}" class='btn btn-default join-out'>Change mind</button>
+		{{else}}
+		<div>
+			You have not joined in this hike.
+		</div>
+		<button data-eventId="{{_id}}" class='btn btn-default join-in'>Join now</button>
+		{{/if}}
+		<p>
+			<h1>People joined in</h1>
+			<ul class="list-group">
+			{{#each rsvps}}
+				<li data-eventId={{_id}} class="list-group-item row testevent">
+					{{this}}
+				</li>
+			{{/each}}
+			</ul>
+		</p>
+		<p>
+			<h1>Comments</h1>
+
+		</p>
+	</div>
+	{{/isolate}}
+
+</Template>
