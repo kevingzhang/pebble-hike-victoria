@@ -5,9 +5,9 @@ Router.configure({
 })
 
 
-# This is the eventPage, the home page Route Controller.
+# This is the homeDesktop, the home page Route Controller.
 HomeController = RouteController.extend({
-	template: 'eventPage'
+	template: 'homeDesktop'
 	layoutTemplate: 'basicLayout'
 	waitOn: () ->
 		[
