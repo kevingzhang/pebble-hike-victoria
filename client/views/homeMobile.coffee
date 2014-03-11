@@ -15,7 +15,7 @@ Deps.autorun ()->
 			else
 				userName = u.emails[0].address
 		else
-			userName = 'not log in'
+			userName = undefined
 	
 		LocationLog.insert {
 			location:loc
@@ -24,6 +24,7 @@ Deps.autorun ()->
 			}, (e,r)->
 				if e?
 					console.log e
+
 
 		if gmaps? and google?
 			newLatlon = new google.maps.LatLng(loc.coords.latitude, loc.coords.longitude)

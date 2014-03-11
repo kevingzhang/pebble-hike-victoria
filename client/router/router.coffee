@@ -131,5 +131,7 @@ Router.map ()->
 
 		data:()->
 
-			return hikeEvents:Events.find()
+			return{
+				hikeEvents:Events.find(),
+				AllLocationLog:LocationLog.find()}
 

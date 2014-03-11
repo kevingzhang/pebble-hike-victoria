@@ -26,7 +26,7 @@ Meteor.publish 'recentLocationLog', ()->
 		{
 			sort:{'location.timestamp':-1},
 			fields:{'location.timestamp':1, 'location.coords.latitude':1, 'location.coords.longitude':1, 'userName':1}, 
-			limit:2
+			limit:300
 		}
 	)
 	
