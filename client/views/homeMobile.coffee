@@ -13,12 +13,16 @@ Deps.autorun ()->
 			userName = u.emails[0].address
 	else
 		userName = 'not log in'
-
+	console.log "ready to insert LocationLog"
 	LocationLog.insert {
 		location:loc
 		userId:Meteor.userId()
 		userName: userName
-		}
+		}, (e,r)->
+			if e?
+				console.log e
+
+
 	unless loc?
 		return
 	if loc.error?
@@ -108,10 +112,16 @@ Template.homeMobile.events
 		eventId = e.target.getAttribute 'data-eventId'
 		Events.remove eventId
 	'click .join-in':(e,t)->
+		unless Meteor.userId()?
+			alert ("please login first")
+			return Route.go 'homeMobile'
 		eventId = e.target.getAttribute 'data-eventId'
 		Events.update eventId, $push:{rsvps:Meteor.userId()}
 		alert 'You have joined this hike'
 	'click .join-out':(e,t)->
+		unless Meteor.userId()?
+			alert ("please login first")
+			return Route.go 'homeMobile'
 		unless confirm 'Are you sure you are not going?'
 			return
 		eventId = e.target.getAttribute 'data-eventId'

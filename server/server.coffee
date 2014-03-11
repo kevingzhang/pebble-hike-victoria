@@ -19,5 +19,6 @@ Meteor.publish "users", ()->
 	return Meteor.users.find()
 
 Meteor.publish 'recentLocationLog', ()->
-	return Meteor.LocationLog.find()
+	console.log "sub recentLocationLog"
+	return LocationLog.find()
 

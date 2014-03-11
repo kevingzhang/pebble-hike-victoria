@@ -105,10 +105,12 @@ Router.map ()->
 		path:'/m'
 		layoutTemplate: 'mobileLayout'
 		waitOn:()->
-			[Meteor.subscribe 'users'
-			,
-			Meteor.subscribe 'recentLocationLog'
-			]
+
+			console.log 'waiton'
+			h1 = Meteor.subscribe 'users'
+			h2 = Meteor.subscribe 'recentLocationLog'
+			h3 = Meteor.subscribe 'events'
+			return [h1,h2,h3]
 		before:()->
 			Session.set 'map', null
 			if navigator.geolocation
@@ -126,8 +128,7 @@ Router.map ()->
 
 			else
 				Session.set 'mylocation', {error: 'Not supported browser'}
-		waitOn:()->
-			Meteor.subscribe 'events'
+
 		data:()->
 
 			return hikeEvents:Events.find()
