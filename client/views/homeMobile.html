@@ -13,16 +13,17 @@
 					<div class='container'>
 						<div class='col-xs-1'>
 						{{#if showLocationOnMapActive this}}
-							<span class='glyphicon glyphicon-map-marker touch-icon alignRight'/>
+							
 						{{/if}}
 						</div>
-						<div class='col-xs-6 title'>
-							{{title}}
+						<div class='col-xs-11'>
+							<div class='title'>
+								{{title}}
+							</div>
+							<div class='time'>
+								{{ hikeTimeString this}}
+							</div>
 						</div>
-						<div class='col-xs-5 time'>
-							{{ hikeTimeString this}}
-						</div>
-						
 					</div>
 					<div class='container'>
 						<div class='col-xs-1'>

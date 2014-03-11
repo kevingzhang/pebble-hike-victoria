@@ -1,33 +1,30 @@
 Deps.autorun ()->
 	loc = Session.get('mylocation')
-	console.log "located"
-	u = Meteor.user()
-	
-	if u?
-		if u.profile?
-			if u.profile.name?
-				userName = u.profile.name
-			else
-				userName = u.emails[0].address
-		else
-			userName = u.emails[0].address
-	else
-		userName = 'not log in'
-	console.log "ready to insert LocationLog"
-	LocationLog.insert {
-		location:loc
-		userId:Meteor.userId()
-		userName: userName
-		}, (e,r)->
-			if e?
-				console.log e
-
-
 	unless loc?
 		return
 	if loc.error?
 		return
 	else
+		u = Meteor.user()
+		if u?
+			if u.profile?
+				if u.profile.name?
+					userName = u.profile.name
+				else
+					userName = u.emails[0].address
+			else
+				userName = u.emails[0].address
+		else
+			userName = 'not log in'
+	
+		LocationLog.insert {
+			location:loc
+			userId:Meteor.userId()
+			userName: userName
+			}, (e,r)->
+				if e?
+					console.log e
+
 		if gmaps? and google?
 			newLatlon = new google.maps.LatLng(loc.coords.latitude, loc.coords.longitude)
 			if gmaps.curUserLocation?

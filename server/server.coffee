@@ -20,5 +20,14 @@ Meteor.publish "users", ()->
 
 Meteor.publish 'recentLocationLog', ()->
 	console.log "sub recentLocationLog"
-	return LocationLog.find()
+	oneDayAgo = moment().subtract('days', 1).toDate().getTime()
+	return LocationLog.find(
+		{'location.timestamp':{$gte: oneDayAgo}},
+		{
+			sort:{'location.timestamp':-1},
+			fields:{'location.timestamp':1, 'location.coords.latitude':1, 'location.coords.longitude':1, 'userName':1}, 
+			limit:2
+		}
+	)
+	
 
