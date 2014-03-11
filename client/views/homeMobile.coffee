@@ -14,10 +14,9 @@ Deps.autorun ()->
 					position: newLatlon
 					map: gmaps.map
 					title: "Myself"
-					icon:'http://maps.google.com/mapfiles/arrow.png'
-				infowindow = new google.maps.InfoWindow("Your current location")
-				infowindow.open gmaps.map, gMarker
-				gmaps.curUserLocation = gmaps.addMarker newLatlon, 'myself'
+					icon:'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+					animation: google.maps.Animation.BOUNCE 
+				gmaps.curUserLocation = gMarker
 
 Template.homeMobile.rendered = ()->
 	unless Session.get 'map'
@@ -40,11 +39,21 @@ Template.homeMobile.helpers
 				active = if hikeEvent._id is Session.get 'curEventId' then true else false
 				latLng = new google.maps.LatLng(hikeEvent.location.lat, hikeEvent.location.lng)
 					
-				if hikeEvent.gMarker?
+				if hikeEvent.gMarker? 
 					gmaps.updateMarker(hikeEvent.gMarker, latLng, hikeEvent.title, active)
+					if active
+						hikeEvent.infowindow.open gmaps.map, hikeEvent.gMarker
+						gmaps.map.panTo hikeEvent.gMarker.getPosition()
+					else
+						hikeEvent.infowindow.close()
+					
 				else
 					newCreatedMarker = gmaps.addMarker latLng, hikeEvent.title, active
 					hikeEvent.gMarker = newCreatedMarker
+					infoTitle = "#{hikeEvent.title}/#{moment(hikeEvent.hikeTime).format('MM-DD')}"
+					infowindow = new google.maps.InfoWindow content:infoTitle
+					hikeEvent.infowindow = infowindow
+
 		return if active then 'active' else ''
 	hikeTimeString: (hikeEvent) ->
 		moment(hikeEvent.hikeTime).format('MM-DD')

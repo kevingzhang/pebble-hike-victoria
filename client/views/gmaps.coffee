@@ -16,7 +16,7 @@
 			position: gLatLng
 			map: this.map
 			title: title
-			animation: if active then google.maps.Animation.BOUNCE else null
+			animation: null
 			icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 		@latLngs.push(gLatLng)
 		@markers.push(gMarker)
@@ -29,10 +29,8 @@
 		if title?
 			unless gMarker.getTitle() is title
 				gMarker.setTitle title
-		if active?
-			setToAnimation = if active then google.maps.Animation.BOUNCE else null
-			unless gMarker.getAnimation() is setToAnimation
-				gMarker.setAnimation setToAnimation
+
+			
 
 	#// calculate and move the bound box based on our marker
 	calcBounds: ()->
