@@ -49,7 +49,11 @@ Template.homeMobile.helpers
 					
 				else
 					newCreatedMarker = gmaps.addMarker latLng, hikeEvent.title, active
+					newCreatedMarker.hikeEventId = hikeEvent._id
 					hikeEvent.gMarker = newCreatedMarker
+					google.maps.event.addListener newCreatedMarker,'click',()->
+						Session.set 'curEventId', @hikeEventId
+						
 					infoTitle = "#{hikeEvent.title}/#{moment(hikeEvent.hikeTime).format('MM-DD')}"
 					infowindow = new google.maps.InfoWindow content:infoTitle
 					hikeEvent.infowindow = infowindow
