@@ -13,32 +13,35 @@
                 <i class="angle up icon"></i>
             {{/if}}
         </div -->
-        <div class="col-xs-1" style="width:15px">
-            <i class="calendar icon"></i>
+        <div class="col-md-1" style="width:15px">
+			<span class='glyphicon glyphicon-calendar'></span>
         </div>
-        <div class="col-lg-3">
+        <div class="col-md-3">
             {{timeFormatted}}
         </div>
-        <div class="col-lg-4">
-            <i class="map marker icon"></i>
+        <div class="col-md-3">
+			<span class="glyphicon glyphicon-map-marker"></span>
             {{title}}
         </div>
-        <div class="col-lg-2">
-            <i class="user icon"></i>
+        <div class="col-md-2">
+			<span class="glyphicon glyphicon-user"></span>
             {{initiator}}
         </div>
-        <div class="col-lg-1">
-            <i class="users icon"></i>
+        <div class="col-md-1">
+			<span class="glyphicon glyphicon-user"></span>
             {{rsvpsCount}}
         </div>
-        <div class="col-xs-1">
+        <div class="col-md-2">
+			<div class="btn-group">
             {{#if isEditable}}
-                <div class="ui icon button" data-eventId="{{_id}}">
-                    <i class="pencil icon" data-eventId="{{_id}}"></i>
-                </div>
+                <button type="button" class="btn btn-warning btn-xs" data-eventId="{{_id}}">
+					<span class="glyphicon glyphicon-edit"></span> Edit
+				</button>
             {{/if}}
-        </div>
-        <div class="col-lg-1">
+			<button type="button" class="btn btn-success btn-xs" data-eventId="{{_id}}" formaction="{{pathFor 'eventDetailPage'}}">
+				<span class="glyphicon glyphicon-zoom-in"></span> Detail
+			</button>
+			</div>
             <a href="{{pathFor 'eventDetailPage'}}" data-eventId="{{_id}}">See in detail page</a>
         </div>
     </div>

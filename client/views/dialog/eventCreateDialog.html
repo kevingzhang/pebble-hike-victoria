@@ -11,7 +11,9 @@
 
 				<div class="modal-body">
 					{{#isolate}}
-						<div class="alert alert-error">{{error}}</div>
+						{{#if error}}
+						<div class="alert alert-danger">{{error}}</div>
+						{{/if}}
 					{{/isolate}}
 					<div class='input-group' id='datetimepicker'>
 						<span class='input-group-addon'>Date and Time</span>

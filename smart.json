@@ -5,9 +5,8 @@
     "accounts-ui-bootstrap-3": {},
     "iron-router": {},
     "bootstrap-datetimepicker": {},
-    "iron-router-progress": {},
-    "semantic-ui": {},
     "device-detection": {},
-    "houston": {}
+    "houston": {},
+    "iron-router-progress": {}
   }
 }

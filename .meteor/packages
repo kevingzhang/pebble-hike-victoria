@@ -20,6 +20,6 @@ bootstrap-3
 accounts-ui-bootstrap-3
 iron-router
 bootstrap-datetimepicker
-iron-router-progress
 device-detection
 houston
+iron-router-progress
