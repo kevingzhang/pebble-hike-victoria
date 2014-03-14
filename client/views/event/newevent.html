@@ -72,9 +72,13 @@
 			<input type='' class="form-control description-mobile" value="{{description}}"></input>
 		</div>
 		<div class='placeholder-for-madewithmeteor'>
-			<button class='topBtn cancel' >Cancel</button><button class='topBtn update'>Update</button>
+			<button class='topBtn cancel' >Cancel</button>
+			{{#if ownerof this}}
+			<button class='topBtn update'>Update</button>
+			{{/if}}
 		</div>
 	</div>
 	{{/isolate}}
 
 </Template>
+

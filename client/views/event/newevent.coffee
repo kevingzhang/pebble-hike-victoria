@@ -34,11 +34,12 @@ Template.newEvent.events
 				inviated:[]
 				rsvps:[]
 				location: {lat:gmaps.curMarker.getPosition().lat(), lng:gmaps.curMarker.getPosition().lng()}
+			Router.go 'homeMobile'
 		else
 			Session.set "createError","It needs a title and a description, or why bother?"
 
 	'click .cancel': ()->
-		Session.set "showCreateDialog", false
+		Router.go 'homeMobile'
 
 
 Template.newEvent.rendered = ()->
@@ -61,6 +62,10 @@ Template.newEvent.rendered = ()->
 
 Template.newEvent.error = ()->
 	Session.get "createError"
+
+Template.eventEditMobile.helpers
+	ownerof:(hikeEvent)->
+		hikeEvent.owner is Meteor.userId()
 
 Template.eventEditMobile.events
 	'click .update': (event, template) ->
@@ -94,12 +99,12 @@ Template.eventEditMobile.events
 			}
 			console.log "#{JSON.stringify modifier}"
 			Events.update template.data._id, modifier
-				
+			Router.go 'home'
 		else
 			Session.set "createError","It needs a title and a description, or why bother?"
 
 	'click .cancel': ()->
-		
+		Router.go 'homeMobile'
 
 Template.eventEditMobile.rendered = ()->
 	$('#datetimepicker').datetimepicker 

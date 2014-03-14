@@ -1,40 +1,71 @@
 <template name="homeMobile">
+	<div class='container'>
+	{{>nevBar}}
+	</div>
 	<div class='locationWarning'>Please allow the browser's location request and continue</div>
 	<div id="map-canvas"></div>
-		<div class='container hikeEventList'>
+		
+		{{#isolate}}
+		<div class='hikeEventList'>
+			<ul class="list-group">
+				{{#each hikeEvents}}
+				<li data-eventId={{_id}} class="list-group-item testevent">
+					<div class='container'>
+						<div class='col-xs-1'>
+						{{#if showLocationOnMapActive this}}
+							
+						{{/if}}
+						</div>
+						<div class='col-xs-11'>
+							<div class='title'>
+								{{title}}
+							</div>
+							<div class='time'>
+								{{ hikeTimeString this}}
+							</div>
+						</div>
+					</div>
+					<div class='container'>
+						<div class='col-xs-1'>
+						</div>
+						<div class='col-xs-11'>
+							{{#if activeEvent this}}
+							{{#if ownerof this}}
+							<span data-eventId="{{_id}}" class='glyphicon glyphicon-trash remove-event touch-icon'/></a>
+							{{/if}}
+							{{#if joinedin this}}
+							<span data-eventId="{{_id}}" class='glyphicon glyphicon-log-out join-out touch-icon'/></a>
+							{{else}}
+							<span data-eventId="{{_id}}" class='glyphicon glyphicon-log-in join-in touch-icon'/></a>
+							{{/if}}
+							<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail touch-icon'/></a>
+							{{/if}}
+						</div>
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+		{{/isolate}}
 
-		{{#each hikeEvents}}
-		
-		<div data-eventId={{_id}} class="row testevent">
-			<div class='col-xs-1 noRightPadding'>
+		<div class='container add-event-container'>
+			<button class='btn btn-default add-event-btn' >
 				
-			{{#if showLocationOnMapActive this}}
-			<span class='glyphicon glyphicon-map-marker alignRight'/>
+				<span class='glyphicon glyphicon-plus touch-icon'/>Add new event
 			
-			{{/if}}
+				
+			</button>
+		</div>
 		
+	<!-- 	{{#isolate}}
+		<div class='list-group'>
+		{{#each AllLocationLog}}
+			<div class='list-group-item'>
+			{{userName}},{{location.coords.latitude}}/{{location.coords.longitude}}
 			</div>
-			<div class='col-xs-3'>
-				{{title}}
-			</div>
-			<div class='col-xs-3'>
-				{{ hikeTimeString this}}
-			</div>
-			<div class='col-xs-4'>
-				{{description}}
-			</div>
-			<div class='col-xs-1'>
-			{{#if activeEvent this}}
-				<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail'/></a>
-			{{/if}}
-			</div>
-		</div>
 		{{/each}}
-		<div class='row'>
-			<div class='col-xs-1 noRightPadding'>
-				<a href='/newevent'><span class='glyphicon glyphicon-plus alignRight'/></a>
-			</div>
-			
-		</div>
+		{{/isolate}}
+		</div> -->
+
 	</div>
 </template>
