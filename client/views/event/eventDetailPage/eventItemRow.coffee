@@ -40,8 +40,9 @@ Template.eventItemRow.helpers({
     upcoming:()->
         moment().isBefore(moment(@hikeTime))
 
-    initiator:()->
+    initiator: ()->
         owner = Meteor.users.findOne @owner
+		
         unless owner?
             return "-"
         if owner._id is Meteor.userId()

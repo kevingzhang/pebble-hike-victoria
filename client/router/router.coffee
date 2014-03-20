@@ -38,7 +38,7 @@ Router.map ()->
 			if Meteor.Device.isTablet() or Meteor.Device.isPhone()
 				Router.go 'homeMobile'
 	
-	@route 'checkMap', 
+	@route 'checkMap',
 		path:'/map/:_id'
 
 	@route 'eventDetailPage',
@@ -48,10 +48,10 @@ Router.map ()->
 		waitOn : () ->
 			Meteor.subscribe 'events'
 		data: () ->
-			console.log "#{this.params._id}"  # ?????
-			pty = Events.findOne(this.params._id)
-			console.log "found event id: #{pty?._id}"
-			return pty
+			currentEvent = Events.findOne(@params._id)
+			unless currentEvent?
+				Router.go 'home'
+			return currentEvent
 		yieldTemplates: {
 				'header': { to: 'header' },
 				'footer': { to: 'footer' }
@@ -63,12 +63,12 @@ Router.map ()->
 		layoutTemplate: 'mobileLayout'
 		before:()->
 			Session.set 'map',false
+
 	@route 'eventeditmobile',
 		template:'eventEditMobile'
 		path: '/meventedit/:_id'
 		layoutTemplate: 'mobileLayout'
 		before:()->
-
 			Session.set 'map',false
 		waitOn:()->
 			Meteor.subscribe 'singleEvent', @params._id
@@ -78,12 +78,12 @@ Router.map ()->
 			if curEvent.owner isnt Meteor.userId()
 				Router.go 'home'
 			return curEvent
+
 	@route 'eventdetailmobile',
 		template:'eventDetailMobile'
 		path: '/meventdetail/:_id'
 		layoutTemplate: 'mobileLayout'
 		before:()->
-
 			Session.set 'map',false
 			if navigator.geolocation
 				Session.set 'mylocation', {error:'Locating... please wait'}
@@ -110,7 +110,6 @@ Router.map ()->
 		path:'/m'
 		layoutTemplate: 'mobileLayout'
 		waitOn:()->
-
 			console.log 'waiton'
 			h1 = Meteor.subscribe 'users'
 			h2 = Meteor.subscribe 'recentLocationLog'
