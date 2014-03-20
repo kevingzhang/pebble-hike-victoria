@@ -1,7 +1,6 @@
 
 Router.configure({
-	notFoundTemplate: 'notFound',
-	
+	notFoundTemplate: 'notFound'
 })
 
 
@@ -45,13 +44,19 @@ Router.map ()->
 	@route 'eventDetailPage',
 		path : '/event/:_id'
 		template : 'eventDetailPage'
+		layoutTemplate: 'basicLayout'
 		waitOn : () ->
 			Meteor.subscribe 'events'
 		data: () ->
 			console.log "#{this.params._id}"  # ?????
 			pty = Events.findOne(this.params._id)
-			console.log "found event id: #{pty?._id}" 
+			console.log "found event id: #{pty?._id}"
 			return pty
+		yieldTemplates: {
+				'header': { to: 'header' },
+				'footer': { to: 'footer' }
+			}
+
 	@route 'newevent',
 		path: '/newevent'
 		template:'newEvent'

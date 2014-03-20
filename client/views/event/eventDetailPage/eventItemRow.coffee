@@ -15,7 +15,7 @@ Template.eventItemRow.events({
         return true
 
     # processing the goto detail page. The .row has captured the click
-    'click a' : (e, t) ->
+    'click .detailBtn' : (e, t) ->
         e.preventDefault()
 
         clickedEventId = e.currentTarget.getAttribute 'data-eventId'
@@ -24,7 +24,7 @@ Template.eventItemRow.events({
             Router.go 'eventDetailPage', theEvent
 
     # the edit button is clicked ---
-    "click .button" : (event, template) ->
+    "click .editBtn" : (event, template) ->
         clickedEventId = event.currentTarget.getAttribute 'data-eventId'
         if clickedEventId?
             console.log("editing event id: #{clickedEventId}")

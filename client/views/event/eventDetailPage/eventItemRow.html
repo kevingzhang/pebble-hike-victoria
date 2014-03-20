@@ -33,16 +33,15 @@
         </div>
         <div class="col-md-2">
 			<div class="btn-group">
-            {{#if isEditable}}
-                <button type="button" class="btn btn-warning btn-xs" data-eventId="{{_id}}">
-					<span class="glyphicon glyphicon-edit"></span> Edit
+				{{#if isEditable}}
+					<button type="button" class="btn btn-warning btn-xs editBtn" data-eventId="{{_id}}">
+						<span class="glyphicon glyphicon-edit"></span> Edit
+					</button>
+				{{/if}}
+				<button type="button" class="btn btn-success btn-xs detailBtn" data-eventId="{{_id}}" url="{{pathFor 'eventDetailPage'}}" >
+					<span class="glyphicon glyphicon-zoom-in"></span> Detail
 				</button>
-            {{/if}}
-			<button type="button" class="btn btn-success btn-xs" data-eventId="{{_id}}" formaction="{{pathFor 'eventDetailPage'}}">
-				<span class="glyphicon glyphicon-zoom-in"></span> Detail
-			</button>
 			</div>
-            <a href="{{pathFor 'eventDetailPage'}}" data-eventId="{{_id}}">See in detail page</a>
         </div>
     </div>
 </template> 
