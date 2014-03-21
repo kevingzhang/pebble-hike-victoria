@@ -24,9 +24,6 @@ HomeController = RouteController.extend({
 })
 
 
-
-
-
 # The map for Router -----------------
 Router.map ()->
 	@route 'home',

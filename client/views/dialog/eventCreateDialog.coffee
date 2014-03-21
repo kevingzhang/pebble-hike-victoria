@@ -37,7 +37,6 @@ Template.createDialog.events
 				inviated:[]
 				rsvps:[]
 
-			Session.set "selected", id
 			if (not publicAccess and Meteor.users.find().count() > 1)
 				openInviteDialog()
 		else
@@ -45,7 +44,11 @@ Template.createDialog.events
 		
 		unless Session.get('createError')?
 			$("#createDialog").modal('hide')
-
+			currentRouteName = Router.current()?.route?.name
+			console.log "currentRouteName:#{currentRouteName}, 'eventDetailPage'"
+			if currentRouteName is 'eventDetailPage'
+				console.log "going"
+				Router.go 'eventDetailPage', {_id:id}
 
 	'click .cancel': ()->
 		Session.set "createError", ''
