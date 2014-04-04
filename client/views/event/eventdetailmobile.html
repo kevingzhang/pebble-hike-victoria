@@ -6,12 +6,11 @@
 	<div id="hikeEventDetail">
 		
 		<div class='title'>{{title}}</div>
-		<a href="/meventedit/{{_id}}"><span class='glyphicon glyphicon-cog gotoUpdate'/></a>
+		<a href="/meventedit/{{_id}}"><span class='glyphicon glyphicon-cog gotoUpdate'></span></a>
 	</div>
 	<div>
 		{{> map}}
 	</div>
-	{{#isolate}}
 	<div class='container'>
 		<div >{{hikeTimeString}}</div>
 		<div>{{description}}</div>
@@ -41,6 +40,5 @@
 
 		</p>
 	</div>
-	{{/isolate}}
 
 </Template>

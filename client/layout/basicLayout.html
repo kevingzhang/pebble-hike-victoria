@@ -4,17 +4,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </header>
 
-	{{ yield 'header' }}
+	{{> yield region='header' }}
 
     <div id="main">            
         <div class="container">
             {{> nevBar }}
-            {{ yield }}
+			{{> yield }}
             {{! Also a sidebar! }} 
         </div>
     </div>                     
 
     <footer>                   
-        {{ yield 'footer' }}     
+		{{> yield region='footer' }}
     </footer>
 </template>        

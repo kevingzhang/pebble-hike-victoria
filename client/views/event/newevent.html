@@ -6,14 +6,13 @@
 		<h1>Point the meetup location on the map</h1>
 		{{> map}}
 	</div>
-	{{#isolate}}
 	<div id="newEventMobile">
 		
 		<div class='input-group' id='datetimepicker'>
 			<span class='input-group-addon'>Date and Time</span>
 			
 			<div id="datetimepicker_1">
-				<input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime"></input>
+				<input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime" />
 			</div>
 			<span class="input-group-addon add-on" style="vertical-align: middle">
 			  <i class="icon" data-time-icon="icon-time" data-date-icon="icon-calendar" ></i>
@@ -21,17 +20,16 @@
 		</div>
 		<div class='input-group'>
 			<span class='input-group-addon'>Place (text)</span>
-			<input type=" " class="form-control dlgTitle"></input>
+			<input type=" " class="form-control dlgTitle" />
 		</div>
 		<div class='input-group'>
 			<span class='input-group-addon'>Memo</span>
-			<input type='' class="form-control description-mobile"></input>
+			<input type='' class="form-control description-mobile" />
 		</div>
 		<div class='placeholder-for-madewithmeteor'>
 			<button class='topBtn cancel' >Cancel</button><button class='topBtn save'>Save</button>
 		</div>
 	</div>
-	{{/isolate}}
 
 </Template>
 
@@ -50,14 +48,13 @@
 		<h1>Change meetup location?</h1>
 		{{> map}}
 	</div>
-	{{#isolate}}
 	<div id="newEventMobile">
 		
 		<div class='input-group' id='datetimepicker'>
 			<span class='input-group-addon'>Date and Time</span>
 			
 			<div id="datetimepicker_1">
-				<input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime" value="{{hikeTime}}"></input>
+				<input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime" value="{{hikeTime}}" />
 			</div>
 			<span class="input-group-addon add-on" style="vertical-align: middle">
 			  <i class="icon" data-time-icon="icon-time" data-date-icon="icon-calendar" ></i>
@@ -65,11 +62,11 @@
 		</div>
 		<div class='input-group'>
 			<span class='input-group-addon'>Place (text)</span>
-			<input type=" " class="form-control dlgTitle" value="{{title}}"></input>
+			<input type=" " class="form-control dlgTitle" value="{{title}}" />
 		</div>
 		<div class='input-group'>
 			<span class='input-group-addon'>Memo</span>
-			<input type='' class="form-control description-mobile" value="{{description}}"></input>
+			<input type='' class="form-control description-mobile" value="{{description}}" />
 		</div>
 		<div class='placeholder-for-madewithmeteor'>
 			<button class='topBtn cancel' >Cancel</button>
@@ -78,7 +75,6 @@
 			{{/if}}
 		</div>
 	</div>
-	{{/isolate}}
 
 </Template>
 

@@ -4,12 +4,12 @@
     "basePackages": {
       "moment": {},
       "bootstrap-3": {},
-      "accounts-ui-bootstrap-3": {},
       "iron-router": {},
       "bootstrap-datetimepicker": {},
       "device-detection": {},
       "houston": {},
-      "iron-router-progress": {}
+      "iron-router-progress": {},
+      "accounts-ui-bootstrap-3": {}
     },
     "packages": {
       "moment": {
@@ -22,15 +22,10 @@
         "tag": "v3.1.1-1",
         "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
       },
-      "accounts-ui-bootstrap-3": {
-        "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
-        "tag": "v0.2.6",
-        "commit": "f3ee0ef6bc506314e19585550b4f9f5620c4ada6"
-      },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.4",
-        "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
       },
       "bootstrap-datetimepicker": {
         "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
@@ -39,18 +34,28 @@
       },
       "device-detection": {
         "git": "https://github.com/mystor/meteor-device-detection.git",
-        "tag": "v0.1.5",
-        "commit": "4c7c6972aa3568062bb03bc0cabbade8874ce836"
+        "tag": "v0.1.6",
+        "commit": "a7909c2319a694b9caa959164485d7413dced435"
       },
       "houston": {
         "git": "https://github.com/gterrono/houston.git",
-        "tag": "v1.0.1",
-        "commit": "59653d3a345a438c83bfd5244b992a19c4b014d7"
+        "tag": "v1.0.2",
+        "commit": "c9af02ec7b52b5ea061a36d260386aa25644507d"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.2.0",
-        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+        "tag": "v0.3.1",
+        "commit": "3f7900feb4bb70a1289b39a1fdcd1f438c0335b3"
+      },
+      "accounts-ui-bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
+        "tag": "v0.3.0-1",
+        "commit": "93ffa5d0e325dc7026de89f6d90c178fa04bdd3a"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",

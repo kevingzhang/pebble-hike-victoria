@@ -10,18 +10,16 @@
 				</div>
 
 				<div class="modal-body">
-					{{#isolate}}
-						{{#if error}}
+					{{#if error}}
 						<div class="alert alert-danger">{{error}}</div>
-						{{/if}}
-					{{/isolate}}
+					{{/if}}
 					<div class='input-group' id='datetimepicker'>
 						<span class='input-group-addon'>Date and Time</span>
 						<!-- input type="" class="form-control dlgTime" 
 						class="input-append date" 
 						-->
 						<div id="datetimepicker_1">
-							<input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime"></input>
+							<input data-format="yyyy-MM-dd hh:mm pp" type="" class="form-control dlgTime" />
 						</div>
 						<span class="input-group-addon add-on" style="vertical-align: middle">
 							<i class="icon" data-time-icon="icon-time" data-date-icon="icon-calendar" ></i>
@@ -29,20 +27,16 @@
 					</div>
 					<div class='input-group'>
 						<span class='input-group-addon'>Place (text)</span>
-						<input type=" " class="form-control dlgTitle">
+						<input type="" class="form-control dlgTitle" />
 					</div>
 					<div class='input-group'>
 						<span class='input-group-addon'>Map link (google map URL)</span>
-						<input type="" class="form-control maplink" value="">
+						<input type="" class="form-control maplink" value="" />
 					</div>
 					<label>Description</label>
 
 					<textarea class="form-control description"></textarea>
 
-					<!-- label class="checkbox">
-						<input type="checkbox" class="private">
-						Private event &mdash; invitees only
-					</label -->
 				</div> <!-- modal-body -->
 
 				<div class="modal-footer">

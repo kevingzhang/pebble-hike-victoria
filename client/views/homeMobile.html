@@ -1,71 +1,55 @@
 <template name="homeMobile">
 	<div class='container'>
-	{{>nevBar}}
+		{{> nevBar}}
 	</div>
 	<div class='locationWarning'>Please allow the browser's location request and continue</div>
 	<div id="map-canvas"></div>
 		
-		{{#isolate}}
-		<div class='hikeEventList'>
-			<ul class="list-group">
-				{{#each hikeEvents}}
-				<li data-eventId={{_id}} class="list-group-item testevent">
-					<div class='container'>
-						<div class='col-xs-1'>
-						{{#if showLocationOnMapActive this}}
-							
-						{{/if}}
+	<div class='hikeEventList'>
+		<ul class="list-group">
+			{{#each hikeEvents}}
+			<li data-eventId={{_id}} class="list-group-item testevent">
+				<div class='container'>
+					<div class='col-xs-1'>
+					{{#if showLocationOnMapActive this}}
+						
+					{{/if}}
+					</div>
+					<div class='col-xs-11'>
+						<div class='title'>
+							{{title}}
 						</div>
-						<div class='col-xs-11'>
-							<div class='title'>
-								{{title}}
-							</div>
-							<div class='time'>
-								{{ hikeTimeString this}}
-							</div>
+						<div class='time'>
+							{{ hikeTimeString this}}
 						</div>
 					</div>
-					<div class='container'>
-						<div class='col-xs-1'>
-						</div>
-						<div class='col-xs-11'>
-							{{#if activeEvent this}}
+				</div>
+				<div class='container'>
+					<div class='col-xs-1'>
+					</div>
+					<div class='col-xs-11'>
+						{{#if activeEvent this}}
 							{{#if ownerof this}}
-							<span data-eventId="{{_id}}" class='glyphicon glyphicon-trash remove-event touch-icon'/></a>
+								<span data-eventId="{{_id}}" class='glyphicon glyphicon-trash remove-event touch-icon'></span>
 							{{/if}}
 							{{#if joinedin this}}
-							<span data-eventId="{{_id}}" class='glyphicon glyphicon-log-out join-out touch-icon'/></a>
+								<span data-eventId="{{_id}}" class='glyphicon glyphicon-log-out join-out touch-icon'></span>
 							{{else}}
-							<span data-eventId="{{_id}}" class='glyphicon glyphicon-log-in join-in touch-icon'/></a>
+								<span data-eventId="{{_id}}" class='glyphicon glyphicon-log-in join-in touch-icon'></span>
 							{{/if}}
-							<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail touch-icon'/></a>
-							{{/if}}
-						</div>
+							<span data-eventId="{{_id}}" class='glyphicon glyphicon-circle-arrow-right openDetail touch-icon'></span>
+						{{/if}}
 					</div>
-				</li>
-				{{/each}}
-			</ul>
-		</div>
-		{{/isolate}}
-
-		<div class='container add-event-container'>
-			<button class='btn btn-default add-event-btn' >
-				
-				<span class='glyphicon glyphicon-plus touch-icon'/>Add new event
-			
-				
-			</button>
-		</div>
-		
-	<!-- 	{{#isolate}}
-		<div class='list-group'>
-		{{#each AllLocationLog}}
-			<div class='list-group-item'>
-			{{userName}},{{location.coords.latitude}}/{{location.coords.longitude}}
-			</div>
-		{{/each}}
-		{{/isolate}}
-		</div> -->
-
+				</div>
+			</li>
+			{{/each}}
+		</ul>
 	</div>
+
+	<div class='container add-event-container'>
+		<button class='btn btn-default add-event-btn' >
+			<span class='glyphicon glyphicon-plus touch-icon'>Add new event</span>
+		</button>
+	</div>
+	
 </template>

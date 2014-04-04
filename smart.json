@@ -2,11 +2,11 @@
   "packages": {
     "moment": {},
     "bootstrap-3": {},
-    "accounts-ui-bootstrap-3": {},
     "iron-router": {},
     "bootstrap-datetimepicker": {},
     "device-detection": {},
     "houston": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "accounts-ui-bootstrap-3": {}
   }
 }
